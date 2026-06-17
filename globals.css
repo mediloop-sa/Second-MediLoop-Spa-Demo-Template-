@@ -29,7 +29,7 @@ html, body {
 }
 
 /* =========================================
-   STAGE 2: EDITORIAL HERO STACK CSS
+   STAGE 2: EDITORIAL HERO STACK CSS (REFINED)
    ========================================= */
 
 .hero-stack-section {
@@ -39,8 +39,20 @@ html, body {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    background-color: var(--bg-canvas);
+    /* 1. We kill the flat white with a soft, warm radial glow */
+    background: radial-gradient(circle at 50% 40%, var(--warm-sand) 0%, var(--bg-canvas) 80%);
     padding: 20px;
+}
+
+/* 2. We add a subtle, expensive sand/paper texture over the background */
+.hero-stack-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+    opacity: 0.7;
+    z-index: 0;
+    pointer-events: none;
 }
 
 .hero-stack-container {
@@ -48,48 +60,41 @@ html, body {
     width: 100%;
     max-width: 1200px;
     height: 80vh;
+    z-index: 1; /* Keeps images above the texture */
 }
 
 /* Base style for all images to give them that luxury finish */
 .stack-img {
     position: absolute;
     object-fit: cover;
-    border-radius: 16px; /* Soft, elegant edges */
-    box-shadow: 0 30px 60px rgba(58, 46, 40, 0.15); /* Deep, soft earth shadow */
+    border-radius: 16px; 
+    box-shadow: 0 30px 60px rgba(58, 46, 40, 0.15); 
     transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* Image 1: The large, central anchor */
+/* Desktop Image Positioning */
 .main-img {
-    width: 45%;
-    height: 85%;
-    top: 50%;
-    left: 50%;
+    width: 45%; height: 85%;
+    top: 50%; left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1;
 }
 
-/* Image 2: The mid-sized left overlap */
 .left-img {
-    width: 30%;
-    height: 55%;
-    top: 55%;
-    left: 15%;
+    width: 30%; height: 55%;
+    top: 55%; left: 15%;
     transform: translateY(-50%);
     z-index: 2;
 }
 
-/* Image 3: The smallest right accent */
 .right-img {
-    width: 25%;
-    height: 45%;
-    top: 30%;
-    right: 18%;
+    width: 25%; height: 45%;
+    top: 30%; right: 18%;
     transform: translateY(-50%);
     z-index: 3;
 }
 
-/* The elegant text floating over the images */
+/* Desktop Text Formatting */
 .hero-text-overlay {
     position: absolute;
     z-index: 10;
@@ -97,7 +102,7 @@ html, body {
     width: 100%;
     top: 50%;
     transform: translateY(-50%);
-    pointer-events: none; /* Lets users click right through the text if needed */
+    pointer-events: none; 
 }
 
 .hero-title {
@@ -105,7 +110,6 @@ html, body {
     letter-spacing: 24px;
     color: var(--rich-terracotta);
     margin: 0 0 15px 0;
-    /* This soft glowing shadow ensures the text pops beautifully over the photos */
     text-shadow: 0 10px 30px rgba(250, 246, 242, 0.95); 
 }
 
@@ -114,50 +118,64 @@ html, body {
     letter-spacing: 6px;
     text-transform: uppercase;
     color: var(--text-main);
-    background: rgba(250, 246, 242, 0.85); /* Frosty canvas backing */
+    background: rgba(250, 246, 242, 0.75); 
     padding: 12px 30px;
     display: inline-block;
     border-radius: 40px;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Adds slight depth to the pill */
 }
 
-/* 📱 MOBILE RESPONSIVENESS (To fix the layout on your phone) */
+/* 📱 MOBILE RESPONSIVENESS (The layout fix) */
 @media (max-width: 768px) {
-    .hero-stack-container {
-        height: 65vh;
-        margin-top: 40px;
-    }
-    
-    .main-img {
-        width: 75%;
-        height: 70%;
-        left: 50%;
+    .hero-stack-section {
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: 80px; /* Pushes everything down neatly */
     }
 
-    .left-img {
-        width: 50%;
-        height: 45%;
-        top: 65%;
-        left: 5%;
-    }
-
-    .right-img {
-        width: 40%;
-        height: 35%;
-        top: 25%;
-        right: 5%;
+    .hero-text-overlay {
+        position: relative;
+        top: 0;
+        transform: translateY(0);
+        margin-bottom: 40px; /* Space between text and images */
+        z-index: 10;
     }
 
     .hero-title {
         font-size: 2.2rem;
         letter-spacing: 12px;
-        margin-left: 12px; /* Offsets the heavy tracking so it stays centered */
+        margin-left: 12px; 
     }
 
     .hero-subtitle {
-        font-size: 0.7rem;
+        font-size: 0.65rem;
         padding: 10px 20px;
+        white-space: nowrap;
+    }
+
+    .hero-stack-container {
+        height: 60vh;
+        margin-top: 0;
+    }
+    
+    /* Cascading the images so they breathe */
+    .main-img {
+        width: 75%; height: 60%;
+        top: 45%; left: 50%;
+    }
+
+    .left-img {
+        width: 45%; height: 40%;
+        top: 15%; left: 10%;
+        transform: translateY(0);
+    }
+
+    .right-img {
+        width: 50%; height: 35%;
+        top: 65%; right: 5%;
+        transform: translateY(0);
     }
 }
 
