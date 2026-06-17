@@ -28,6 +28,139 @@ html, body {
     font-family: 'Open Sans', sans-serif;
 }
 
+/* =========================================
+   STAGE 2: EDITORIAL HERO STACK CSS
+   ========================================= */
+
+.hero-stack-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: var(--bg-canvas);
+    padding: 20px;
+}
+
+.hero-stack-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    height: 80vh;
+}
+
+/* Base style for all images to give them that luxury finish */
+.stack-img {
+    position: absolute;
+    object-fit: cover;
+    border-radius: 16px; /* Soft, elegant edges */
+    box-shadow: 0 30px 60px rgba(58, 46, 40, 0.15); /* Deep, soft earth shadow */
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Image 1: The large, central anchor */
+.main-img {
+    width: 45%;
+    height: 85%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+/* Image 2: The mid-sized left overlap */
+.left-img {
+    width: 30%;
+    height: 55%;
+    top: 55%;
+    left: 15%;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+/* Image 3: The smallest right accent */
+.right-img {
+    width: 25%;
+    height: 45%;
+    top: 30%;
+    right: 18%;
+    transform: translateY(-50%);
+    z-index: 3;
+}
+
+/* The elegant text floating over the images */
+.hero-text-overlay {
+    position: absolute;
+    z-index: 10;
+    text-align: center;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none; /* Lets users click right through the text if needed */
+}
+
+.hero-title {
+    font-size: 5rem;
+    letter-spacing: 24px;
+    color: var(--rich-terracotta);
+    margin: 0 0 15px 0;
+    /* This soft glowing shadow ensures the text pops beautifully over the photos */
+    text-shadow: 0 10px 30px rgba(250, 246, 242, 0.95); 
+}
+
+.hero-subtitle {
+    font-size: 1rem;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--text-main);
+    background: rgba(250, 246, 242, 0.85); /* Frosty canvas backing */
+    padding: 12px 30px;
+    display: inline-block;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+/* 📱 MOBILE RESPONSIVENESS (To fix the layout on your phone) */
+@media (max-width: 768px) {
+    .hero-stack-container {
+        height: 65vh;
+        margin-top: 40px;
+    }
+    
+    .main-img {
+        width: 75%;
+        height: 70%;
+        left: 50%;
+    }
+
+    .left-img {
+        width: 50%;
+        height: 45%;
+        top: 65%;
+        left: 5%;
+    }
+
+    .right-img {
+        width: 40%;
+        height: 35%;
+        top: 25%;
+        right: 5%;
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+        letter-spacing: 12px;
+        margin-left: 12px; /* Offsets the heavy tracking so it stays centered */
+    }
+
+    .hero-subtitle {
+        font-size: 0.7rem;
+        padding: 10px 20px;
+    }
+}
+
 h1, h2, h3, h4 {
     font-family: 'Playfair Display', serif; /* Elegant, editorial serif for this template */
     font-weight: 400;
