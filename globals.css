@@ -45,7 +45,6 @@ h1, h2, h3 {
    ========================================= */
 .hero {
     height: 100vh;
-    /* Updated with your new Canva image link and set back to 'cover' to fill the screen */
     background: linear-gradient(rgba(58, 53, 50, 0.1), rgba(58, 53, 50, 0.1)), url('https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Screenshot_20260618_082846_Canva.jpg') center/cover no-repeat;
     display: flex;
     align-items: center;
@@ -163,13 +162,53 @@ h1, h2, h3 {
     line-height: 1.6;
 }
 
-/* Image Shapes */
+/* =========================================
+   INTERACTIVE IMAGE SHAPES (HOVER MAGIC)
+   ========================================= */
+
+/* The protective box that keeps the zoom contained */
+.image-wrapper {
+    position: relative;
+    overflow: hidden; 
+    cursor: pointer;
+}
+
 .square-img {
     width: 100%;
     aspect-ratio: 1 / 1;
     object-fit: cover;
+    display: block;
+    /* The super slow, expensive-feeling zoom transition */
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); 
 }
 
+/* The chic frosted overlay that hides until you hover */
+.image-wrapper::after {
+    content: 'View Ritual';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(247, 234, 232, 0.85); /* Tinted with your blush pink */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    letter-spacing: 2px;
+    transition: opacity 0.5s ease;
+}
+
+/* What happens when the mouse touches the image */
+.image-wrapper:hover .square-img {
+    transform: scale(1.08); /* Zooms the image in by 8% */
+}
+
+.image-wrapper:hover::after {
+    opacity: 1; /* Fades the text and pink glass in */
+}
+
+/* Keeping the circle images static for now */
 .circle-img {
     width: 100%;
     aspect-ratio: 1 / 1;
