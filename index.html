@@ -128,49 +128,40 @@
         </div>
     </section>
 
-    <section id="book" class="split-footer">
-        <div class="footer-left reveal-up">
-            <h2>Book an<br>Appointment</h2>
-
-            <div class="contact-block">
-                <h4>Phone Number</h4>
-                <p>+27 (0)12 345 6789</p>
-            </div>
-
-            <div class="contact-block">
-                <h4>Email Address</h4>
-                <p>hello@lumiere.co.za</p>
-            </div>
-
-            <div class="contact-block">
-                <h4>Location</h4>
-                <p>123 Sanctuary Blvd, Wellness City</p>
-            </div>
-        </div>
-        <div class="footer-right">
-            <img src="https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Spa%20image%203.png" alt="Spa Oils">
+    <section class="newsletter reveal-up">
+        <div class="container text-center">
+            <h2>Join Our Mailing List</h2>
+            <p class="subtitle">Subscribe to receive exclusive offers, wellness tips, and spa news.</p>
+            
+            <form id="newsletterForm" class="newsletter-form">
+                <input type="email" id="emailInput" placeholder="Enter your email address" required>
+                <button type="submit" class="btn-pill" id="subscribeBtn">Subscribe</button>
+            </form>
+            <p id="formMessage" class="form-message"></p>
         </div>
     </section>
 
     <footer class="site-footer">
-        <div class="container footer-grid">
-            <div class="footer-col reveal-up">
+        <div class="container">
+            <div class="footer-top reveal-up">
                 <h3 class="footer-logo"><span class="logo-icon">🌿</span> Lumière Spa</h3>
                 <p>A sanctuary carved from the earth, dedicated to your balance, harmony, and ultimate renewal.</p>
             </div>
             
-            <div class="footer-col reveal-up" style="transition-delay: 0.1s;">
-                <h4>Contact Details</h4>
-                <p>+27 (0)12 345 6789</p>
-                <p>hello@lumiere.co.za</p>
-                <p>123 Sanctuary Blvd<br>Wellness City, 0001</p>
-            </div>
-            
-            <div class="footer-col reveal-up" style="transition-delay: 0.2s;">
-                <h4>Working Hours</h4>
-                <p>Monday - Friday: 08:00 - 19:00</p>
-                <p>Saturday: 09:00 - 17:00</p>
-                <p>Sunday: Closed</p>
+            <div class="footer-grid">
+                <div class="footer-col reveal-up" style="transition-delay: 0.1s;">
+                    <h4>Contact Details</h4>
+                    <p>+27 (0)12 345 6789</p>
+                    <p>hello@lumiere.co.za</p>
+                    <p>123 Sanctuary Blvd<br>Wellness City, 0001</p>
+                </div>
+                
+                <div class="footer-col reveal-up" style="transition-delay: 0.2s;">
+                    <h4>Working Hours</h4>
+                    <p>Monday - Friday: 08:00 - 19:00</p>
+                    <p>Saturday: 09:00 - 17:00</p>
+                    <p>Sunday: Closed</p>
+                </div>
             </div>
         </div>
         
@@ -271,6 +262,54 @@
             window.addEventListener('click', (e) => {
                 if (e.target === modal) modal.classList.remove('active');
             });
+
+            // 4. SUPABASE NEWSLETTER INTEGRATION
+            const newsletterForm = document.getElementById('newsletterForm');
+            const formMessage = document.getElementById('formMessage');
+
+            if(newsletterForm) {
+                newsletterForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const email = document.getElementById('emailInput').value;
+                    const subscribeBtn = document.getElementById('subscribeBtn');
+                    
+                    // Button Loading State
+                    subscribeBtn.textContent = 'Subscribing...';
+                    subscribeBtn.disabled = true;
+
+                    // ⚠️ PASTE YOUR ANON KEY HERE BETWEEN THE QUOTES ⚠️
+                    const SUPABASE_ANON_KEY = 'YOUR_ANON_KEY_HERE'; 
+                    const SUPABASE_URL = 'https://vafzjdqepmuunwqhzunz.supabase.co/rest/v1/mailing_list';
+
+                    try {
+                        const response = await fetch(SUPABASE_URL, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'apikey': SUPABASE_ANON_KEY,
+                                'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                                'Prefer': 'return=minimal'
+                            },
+                            // Sends email to the exact column in your Supabase table
+                            body: JSON.stringify({ email_address: email })
+                        });
+
+                        if (response.ok) {
+                            formMessage.textContent = 'Thank you! You have been successfully subscribed.';
+                            formMessage.style.color = 'var(--text-dark)';
+                            newsletterForm.reset();
+                        } else {
+                            throw new Error('Network response was not ok.');
+                        }
+                    } catch (error) {
+                        formMessage.textContent = 'Oops! Something went wrong. Please try again.';
+                        formMessage.style.color = '#B35C3B'; // Red-ish tone for errors
+                    } finally {
+                        subscribeBtn.textContent = 'Subscribe';
+                        subscribeBtn.disabled = false;
+                    }
+                });
+            }
         });
     </script>
 </body>
