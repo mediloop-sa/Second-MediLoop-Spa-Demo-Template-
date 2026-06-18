@@ -170,7 +170,7 @@ h1, h2, h3 {
     display: flex;
     align-items: center;
     gap: 12px;
-    color: #FFFFFF; /* White */
+    color: #FFFFFF; 
     z-index: 2;
 }
 
@@ -186,7 +186,7 @@ h1, h2, h3 {
 
 .hero-content h1 {
     font-size: clamp(2rem, 5vw, 4.5rem);
-    color: #FFFFFF; /* White */
+    color: #FFFFFF; 
     margin-bottom: 20px;
     line-height: 1.1;
     letter-spacing: -1px; 
@@ -195,15 +195,15 @@ h1, h2, h3 {
 .hero-divider {
     border: 0;
     height: 1px;
-    background-color: #FFFFFF; /* White */
+    background-color: #FFFFFF; 
     width: 100%;
     margin-bottom: 25px;
-    opacity: 0.5; /* Bumped to 0.5 for a crisp line */
+    opacity: 0.5; 
 }
 
 .hero-subtext {
     font-size: 1.1rem;
-    color: #FFFFFF; /* White */
+    color: #FFFFFF; 
     margin-bottom: 40px;
     line-height: 1.6;
 }
@@ -211,8 +211,8 @@ h1, h2, h3 {
 .btn-outline {
     display: inline-block;
     padding: 14px 40px;
-    border: 1px solid #FFFFFF; /* White */
-    color: #FFFFFF; /* White */
+    border: 1px solid #FFFFFF; 
+    color: #FFFFFF; 
     text-decoration: none;
     font-size: 1rem;
     border-radius: 50px; 
@@ -220,8 +220,8 @@ h1, h2, h3 {
 }
 
 .btn-outline:hover {
-    background: #FFFFFF; /* Turns solid white */
-    color: var(--text-dark); /* Dark text on hover so it remains readable */
+    background: #FFFFFF; 
+    color: var(--text-dark); 
 }
 
 /* =========================================
@@ -493,7 +493,7 @@ h1, h2, h3 {
 }
 
 /* =========================================
-   FACILITIES GRID (NEW ARCHWAY LAYOUT)
+   FACILITIES GRID (ARCHWAY LAYOUT)
    ========================================= */
 .facilities { background-color: var(--bg-canvas); }
 
@@ -508,17 +508,15 @@ h1, h2, h3 {
     cursor: pointer;
 }
 
-/* The elegant new architectural pill/arch shape */
 .archway-img {
     width: 100%;
-    aspect-ratio: 3 / 4; /* Tall, magazine-style format */
+    aspect-ratio: 3 / 4; 
     object-fit: cover;
-    border-radius: 150px 150px 20px 20px; /* Fully rounded top, soft corners bottom */
+    border-radius: 150px 150px 20px 20px; 
     box-shadow: 0 10px 30px rgba(58, 53, 50, 0.08);
     transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease;
 }
 
-/* Smooth hovering physics */
 .grid-item:hover .archway-img {
     transform: translateY(-15px);
     box-shadow: 0 20px 40px rgba(58, 53, 50, 0.15);
@@ -537,54 +535,56 @@ h1, h2, h3 {
 }
 
 /* =========================================
-   SPLIT BOOKING SECTION
+   NEWSLETTER SIGN UP SECTION
    ========================================= */
-.split-footer {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    min-height: 600px;
+.newsletter {
+    background-color: var(--blush-pink); /* Gorgeous soft background to break the page */
+    padding: 80px 20px;
 }
 
-.footer-left {
-    background-color: var(--blush-pink);
-    padding: 100px 10%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.footer-left h2 {
+.newsletter h2 {
     font-size: 2.5rem;
-    margin-bottom: 50px;
-    line-height: 1.3;
+    margin-bottom: 15px;
 }
 
-.contact-block { margin-bottom: 30px; }
-
-.contact-block h4 {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 600;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 5px;
-    color: var(--text-dark);
-}
-
-.contact-block p {
+.newsletter .subtitle {
+    margin-bottom: 40px;
     color: var(--text-muted);
-    font-size: 0.95rem;
 }
 
-.footer-right img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+.newsletter-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 550px;
+    margin: 0 auto;
+    gap: 15px;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 16px 25px;
+    border: 1px solid rgba(58, 53, 50, 0.1);
+    border-radius: 50px; /* Soft pill shape input */
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    outline: none;
+    box-shadow: 0 5px 15px rgba(58, 53, 50, 0.03);
+    transition: border 0.3s ease;
+}
+
+.newsletter-form input:focus {
+    border: 1px solid var(--text-dark);
+}
+
+.form-message {
+    margin-top: 20px;
+    font-size: 0.95rem;
+    height: 20px; /* Prevents layout jump when text appears */
 }
 
 /* =========================================
-   MAIN SITE FOOTER
+   MAIN SITE FOOTER (CENTERED)
    ========================================= */
 .site-footer {
     background-color: var(--text-dark);
@@ -592,13 +592,37 @@ h1, h2, h3 {
     padding: 80px 20px 30px 20px;
 }
 
+/* The centered logo anchor */
+.footer-top {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem; /* Larger, editorial logo text */
+    font-weight: 400;
+    margin-bottom: 15px;
+    color: var(--bg-canvas);
+}
+
+.footer-top p {
+    max-width: 500px;
+    margin: 0 auto;
+    color: rgba(250, 246, 242, 0.7);
+    line-height: 1.6;
+}
+
+/* Details stacked nicely under the logo */
 .footer-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr;
     gap: 40px;
     padding-bottom: 60px;
     border-bottom: 1px solid rgba(250, 246, 242, 0.1);
-    padding-top: 0;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center; /* Ensures the columns text aligns nicely */
 }
 
 .footer-col h4 {
@@ -608,13 +632,6 @@ h1, h2, h3 {
     letter-spacing: 2px;
     margin-bottom: 20px;
     color: var(--bg-canvas);
-}
-
-.footer-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
-    font-weight: 400;
-    margin-bottom: 15px;
 }
 
 .footer-col p {
@@ -686,7 +703,7 @@ h1, h2, h3 {
    MOBILE RESPONSIVENESS
    ========================================= */
 @media (max-width: 768px) {
-    .philosophy-grid, .grid-3, .split-footer, .footer-grid {
+    .philosophy-grid, .grid-3, .footer-grid {
         grid-template-columns: 1fr;
     }
 
@@ -714,24 +731,20 @@ h1, h2, h3 {
         flex: 0 0 250px;
     }
 
-    /* Keeps the archways looking tall on phones too */
     .archway-img {
         width: 80%;
         margin: 0 auto;
     }
 
-    .footer-left {
-        padding: 60px 20px;
-        text-align: center;
+    /* Newsletter form stacks beautifully on mobile */
+    .newsletter-form {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .newsletter-form input, .newsletter-form button {
+        width: 100%;
     }
 
-    .footer-right img { height: 350px; }
-
-    .site-footer {
-        padding: 60px 20px 30px 20px;
-        text-align: center;
-    }
-    
     .footer-grid {
         gap: 40px;
         padding-bottom: 40px;
