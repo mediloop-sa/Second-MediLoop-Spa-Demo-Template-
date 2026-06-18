@@ -296,30 +296,59 @@ h1, h2, h3 {
 }
 
 /* =========================================
-   MOBILE RESPONSIVENESS
+   MOBILE RESPONSIVENESS (PERFECTED)
    ========================================= */
 @media (max-width: 768px) {
+    /* Stack all our grids into a single column */
     .philosophy-grid, .grid-3, .split-footer {
         grid-template-columns: 1fr;
     }
 
+    /* Reduce global padding so there isn't massive dead space on phones */
+    .container {
+        padding: 60px 20px;
+    }
+
+    /* Shrink the massive hero text to fit nicely */
+    .hero-content h1 {
+        font-size: 2.8rem;
+        margin-bottom: 30px;
+    }
+
+    /* Give the parallax images enough vertical room to float without colliding */
     .philosophy-images {
-        height: 600px;
-        margin-top: 40px;
+        height: 550px;
+        margin-top: 30px;
     }
 
     .img-top, .img-bottom {
         width: 80%;
+        height: 250px;
     }
 
-    .img-top { left: 10%; right: auto; }
-    .img-bottom { left: 10%; }
+    .img-top { 
+        left: 10%; 
+        right: auto; 
+        top: 0;
+    }
 
+    .img-bottom { 
+        left: 10%; 
+        bottom: 0;
+    }
+
+    /* Center the booking footer for a cleaner mobile layout */
     .footer-left {
         padding: 60px 20px;
+        text-align: center;
     }
 
     .footer-right img {
-        height: 400px;
+        height: 350px; /* Slightly shorter so it doesn't dominate the screen */
+    }
+
+    /* Shorten the scroll-reveal distance so it feels smooth, not jarring */
+    .reveal-up {
+        transform: translateY(20px);
     }
 }
