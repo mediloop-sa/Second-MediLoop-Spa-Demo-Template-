@@ -199,13 +199,15 @@ h1, h2, h3 {
     transition: opacity 0.5s ease;
 }
 
-/* What happens when the mouse touches the image */
-.image-wrapper:hover .square-img {
-    transform: scale(1.08); /* Zooms the image in by 8% */
+/* What happens when a mouse hovers OR a finger taps the image */
+.image-wrapper:hover .square-img,
+.image-wrapper:active .square-img {
+    transform: scale(1.08); 
 }
 
-.image-wrapper:hover::after {
-    opacity: 1; /* Fades the text and pink glass in */
+.image-wrapper:hover::after,
+.image-wrapper:active::after {
+    opacity: 1; 
 }
 
 /* Keeping the circle images static for now */
