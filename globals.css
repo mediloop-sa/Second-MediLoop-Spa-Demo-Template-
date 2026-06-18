@@ -163,7 +163,6 @@ h1, h2, h3 {
     padding-left: 10%; 
 }
 
-/* Add a light cream color overlay for readability without washing out the image */
 .hero::before {
     content: '';
     position: absolute;
@@ -192,7 +191,6 @@ h1, h2, h3 {
 
 .hero-content { max-width: 550px; z-index: 1;}
 
-/* FIXED: Reduced font scaling size for mobile text issue */
 .hero-content h1 {
     font-size: clamp(2rem, 5vw, 4.5rem);
     color: var(--text-dark);
@@ -334,10 +332,10 @@ h1, h2, h3 {
     display: none; 
 }
 
-/* FIXED: Re-styled card to a clean row with only "TAP FOR DETAILS" */
+/* FIXED: Re-styled card to a strict width so images CANNOT stretch */
 .package-card {
-    min-width: 320px; 
-    flex: 0 0 auto;
+    width: 280px; 
+    flex: 0 0 280px; /* This explicitly locks the width! */
     scroll-snap-align: center;
     cursor: pointer;
     transition: transform 0.3s ease;
@@ -354,7 +352,6 @@ h1, h2, h3 {
     margin: 20px 0 5px 0;
 }
 
-/* FIXED: Simplifed details text to hide card data and match reference row style */
 .view-details {
     font-size: 1rem;
     text-transform: uppercase;
@@ -368,12 +365,14 @@ h1, h2, h3 {
 .image-wrapper {
     position: relative;
     overflow: hidden; 
-    border-radius: 20px; /* Applied soft corners here too */
+    border-radius: 20px; 
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Forces the box to stay perfectly square */
 }
 
 .square-img {
     width: 100%;
-    aspect-ratio: 1 / 1;
+    height: 100%;
     object-fit: cover;
     display: block;
     transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); 
@@ -405,7 +404,6 @@ h1, h2, h3 {
     opacity: 1; 
 }
 
-/* Keeping circle images static with soft corners as requested by user turn 8 */
 .circle-img {
     width: 100%;
     aspect-ratio: 1 / 1;
@@ -437,14 +435,13 @@ h1, h2, h3 {
     pointer-events: auto;
 }
 
-/* FIXED: Reduced modal content area size, updated tint to cream monochromatic */
+/* RESTORED: Beautiful spacious modal size! */
 .dossier-content {
-    /* Beautiful monochromatic cream tinted background based on user reference and code */
     background: linear-gradient(rgba(250, 246, 242, 0.95), rgba(250, 246, 242, 0.95)), url('https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Pink%20Image.jpg') center/cover no-repeat;
     width: 100%;
-    max-width: 400px; /* Scaled down the box as requested */
+    max-width: 500px; /* Restored back to the spacious size */
     border-radius: 30px; 
-    padding: 30px 25px; /* Reduced padding for smaller feel */
+    padding: 50px 40px; /* Restored padding */
     position: relative;
     box-shadow: 0 20px 50px rgba(0,0,0,0.2);
     transform: scale(0.95);
@@ -470,9 +467,9 @@ h1, h2, h3 {
     transform: rotate(90deg);
 }
 
-/* Scaled down modal title too */
+/* Restored title size */
 .dossier-content h2 {
-    font-size: 1.8rem;
+    font-size: 2rem; 
     text-align: center;
     margin-bottom: 30px;
     color: var(--text-dark);
@@ -517,7 +514,7 @@ h1, h2, h3 {
 }
 
 /* =========================================
-   FACILITIES GRID (Retained from original)
+   FACILITIES GRID
    ========================================= */
 .facilities { background-color: var(--bg-canvas); }
 
@@ -605,7 +602,7 @@ h1, h2, h3 {
 .grid-item:nth-child(3).reveal-up { transition-delay: 0.4s; }
 
 /* =========================================
-   MOBILE RESPONSIVENESS (Refined to address size issues)
+   MOBILE RESPONSIVENESS
    ========================================= */
 @media (max-width: 768px) {
     .philosophy-grid, .grid-3, .split-footer {
@@ -614,7 +611,6 @@ h1, h2, h3 {
 
     .container { padding: 60px 20px; }
     
-    /* Left-align mobile fixes */
     .hero {
         padding-left: 5%;
         padding-right: 5%;
@@ -625,13 +621,18 @@ h1, h2, h3 {
         top: 30px;
     }
 
-    /* FIXED: Drastically reduced mobile hero font size to fit naturally like screenshot */
     .hero-content h1 {
-        font-size: 2.2rem; /* Reduced from clamp scaling as it was too large on phone */
+        font-size: 2.2rem; 
         margin-bottom: 15px;
     }
 
     .philosophy-action { margin-top: 20px; }
+
+    /* Shrink the package cards a tiny bit more for mobile screens */
+    .package-card {
+        width: 250px;
+        flex: 0 0 250px;
+    }
 
     .footer-left {
         padding: 60px 20px;
@@ -645,7 +646,6 @@ h1, h2, h3 {
     .glass-sidebar { width: 100vw; padding: 100px 30px; }
     .nav-links a { font-size: 2.2rem; }
 
-    /* FIXED: Mobile modal meta alignment and padding */
-    .dossier-content { padding: 40px 25px; max-width: 380px; } /* Slightly reduce box width to be safe on small phones */
+    .dossier-content { padding: 40px 25px; }
     .dossier-meta { flex-direction: column; gap: 10px; text-align: center; }
 }
