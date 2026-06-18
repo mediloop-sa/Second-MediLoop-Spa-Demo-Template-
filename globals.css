@@ -150,7 +150,7 @@ h1, h2, h3 {
 
 
 /* =========================================
-   HERO SECTION (EDITORIAL STYLE)
+   HERO SECTION (NO TINT)
    ========================================= */
 .hero {
     position: relative;
@@ -163,12 +163,7 @@ h1, h2, h3 {
     padding-left: 10%; 
 }
 
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(250, 246, 242, 0.6);
-}
+/* OVERLAY COMPLETELY REMOVED HERE */
 
 .hero-nav {
     position: absolute;
@@ -283,7 +278,7 @@ h1, h2, h3 {
 }
 
 /* =========================================
-   PACKAGES HORIZONTAL SCROLL (Theme Pink)
+   PACKAGES HORIZONTAL SCROLL
    ========================================= */
 .packages {
     background-color: #FFFFFF;
@@ -332,10 +327,9 @@ h1, h2, h3 {
     display: none; 
 }
 
-/* FIXED: Re-styled card to a strict width so images CANNOT stretch */
 .package-card {
     width: 280px; 
-    flex: 0 0 280px; /* This explicitly locks the width! */
+    flex: 0 0 280px; 
     scroll-snap-align: center;
     cursor: pointer;
     transition: transform 0.3s ease;
@@ -361,13 +355,12 @@ h1, h2, h3 {
     padding-bottom: 2px;
 }
 
-/* Interactive Image Soft Corners */
 .image-wrapper {
     position: relative;
     overflow: hidden; 
     border-radius: 20px; 
     width: 100%;
-    aspect-ratio: 1 / 1; /* Forces the box to stay perfectly square */
+    aspect-ratio: 1 / 1; 
 }
 
 .square-img {
@@ -412,7 +405,7 @@ h1, h2, h3 {
 }
 
 /* =========================================
-   THE DOSSIER MODAL (CREAM-MONOCHROMATIC)
+   THE DOSSIER MODAL
    ========================================= */
 .dossier-modal {
     position: fixed;
@@ -435,13 +428,12 @@ h1, h2, h3 {
     pointer-events: auto;
 }
 
-/* RESTORED: Beautiful spacious modal size! */
 .dossier-content {
     background: linear-gradient(rgba(250, 246, 242, 0.95), rgba(250, 246, 242, 0.95)), url('https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Pink%20Image.jpg') center/cover no-repeat;
     width: 100%;
-    max-width: 500px; /* Restored back to the spacious size */
+    max-width: 500px; 
     border-radius: 30px; 
-    padding: 50px 40px; /* Restored padding */
+    padding: 50px 40px; 
     position: relative;
     box-shadow: 0 20px 50px rgba(0,0,0,0.2);
     transform: scale(0.95);
@@ -467,7 +459,6 @@ h1, h2, h3 {
     transform: rotate(90deg);
 }
 
-/* Restored title size */
 .dossier-content h2 {
     font-size: 2rem; 
     text-align: center;
@@ -475,7 +466,6 @@ h1, h2, h3 {
     color: var(--text-dark);
 }
 
-/* Staggered Treatment List */
 .dossier-list {
     list-style: none;
     padding: 0;
@@ -487,7 +477,6 @@ h1, h2, h3 {
     color: var(--text-dark);
     padding: 12px 0;
     border-bottom: 1px solid rgba(58, 53, 50, 0.1);
-    
     opacity: 0;
     transform: translateY(15px);
     transition: all 0.4s ease;
@@ -498,7 +487,6 @@ h1, h2, h3 {
     transform: translateY(0);
 }
 
-/* Time & Price Bottom Bar */
 .dossier-meta {
     display: flex;
     justify-content: space-between;
@@ -537,7 +525,7 @@ h1, h2, h3 {
 }
 
 /* =========================================
-   SPLIT FOOTER BOOKING SECTION
+   SPLIT BOOKING SECTION
    ========================================= */
 .split-footer {
     display: grid;
@@ -584,6 +572,87 @@ h1, h2, h3 {
 }
 
 /* =========================================
+   MAIN SITE FOOTER
+   ========================================= */
+.site-footer {
+    background-color: var(--text-dark);
+    color: var(--bg-canvas);
+    padding: 80px 20px 30px 20px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid rgba(250, 246, 242, 0.1);
+    padding-top: 0;
+}
+
+.footer-col h4 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    color: var(--bg-canvas);
+}
+
+.footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+.footer-col p {
+    color: rgba(250, 246, 242, 0.7);
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.footer-bottom {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    text-align: center;
+}
+
+.footer-legal {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.footer-legal a {
+    color: rgba(250, 246, 242, 0.7);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.3s ease;
+}
+
+.footer-legal .divider {
+    color: rgba(250, 246, 242, 0.3);
+}
+
+.footer-legal a:hover {
+    color: var(--bg-canvas);
+}
+
+.powered-by {
+    font-size: 0.8rem;
+    color: rgba(250, 246, 242, 0.5);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+
+/* =========================================
    CINEMATIC SCROLL REVEALS
    ========================================= */
 .reveal-up {
@@ -605,7 +674,7 @@ h1, h2, h3 {
    MOBILE RESPONSIVENESS
    ========================================= */
 @media (max-width: 768px) {
-    .philosophy-grid, .grid-3, .split-footer {
+    .philosophy-grid, .grid-3, .split-footer, .footer-grid {
         grid-template-columns: 1fr;
     }
 
@@ -628,7 +697,6 @@ h1, h2, h3 {
 
     .philosophy-action { margin-top: 20px; }
 
-    /* Shrink the package cards a tiny bit more for mobile screens */
     .package-card {
         width: 250px;
         flex: 0 0 250px;
@@ -640,6 +708,16 @@ h1, h2, h3 {
     }
 
     .footer-right img { height: 350px; }
+
+    .site-footer {
+        padding: 60px 20px 30px 20px;
+        text-align: center;
+    }
+    
+    .footer-grid {
+        gap: 40px;
+        padding-bottom: 40px;
+    }
 
     .reveal-up { transform: translateY(20px); }
 
