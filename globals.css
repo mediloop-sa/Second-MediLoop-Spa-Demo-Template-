@@ -150,7 +150,7 @@ h1, h2, h3 {
 
 
 /* =========================================
-   HERO SECTION (NO TINT)
+   HERO SECTION (WHITE TYPOGRAPHY)
    ========================================= */
 .hero {
     position: relative;
@@ -163,7 +163,6 @@ h1, h2, h3 {
     padding-left: 10%; 
 }
 
-/* The Logo Bar */
 .hero-nav {
     position: absolute;
     top: 50px;
@@ -171,43 +170,49 @@ h1, h2, h3 {
     display: flex;
     align-items: center;
     gap: 12px;
-    color: #FFFFFF; /* Switched to White */
+    color: #FFFFFF; /* White */
     z-index: 2;
 }
 
-/* The Main Heading */
+.logo-icon { font-size: 1.5rem; }
+.logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.hero-content { max-width: 550px; z-index: 1;}
+
 .hero-content h1 {
     font-size: clamp(2rem, 5vw, 4.5rem);
-    color: #FFFFFF; /* Switched to White */
+    color: #FFFFFF; /* White */
     margin-bottom: 20px;
     line-height: 1.1;
     letter-spacing: -1px; 
 }
 
-/* The Dividing Line */
 .hero-divider {
     border: 0;
     height: 1px;
-    background-color: #FFFFFF; /* Switched to White */
+    background-color: #FFFFFF; /* White */
     width: 100%;
     margin-bottom: 25px;
-    opacity: 0.5; /* Made slightly more opaque so it stands out */
+    opacity: 0.5; /* Bumped to 0.5 for a crisp line */
 }
 
-/* The Paragraph Text */
 .hero-subtext {
     font-size: 1.1rem;
-    color: #FFFFFF; /* Switched to White */
+    color: #FFFFFF; /* White */
     margin-bottom: 40px;
     line-height: 1.6;
 }
 
-/* The Button */
 .btn-outline {
     display: inline-block;
     padding: 14px 40px;
-    border: 1px solid #FFFFFF; /* Switched to White */
-    color: #FFFFFF; /* Switched to White */
+    border: 1px solid #FFFFFF; /* White */
+    color: #FFFFFF; /* White */
     text-decoration: none;
     font-size: 1rem;
     border-radius: 50px; 
@@ -215,8 +220,8 @@ h1, h2, h3 {
 }
 
 .btn-outline:hover {
-    background: #FFFFFF; /* Turns solid white on hover */
-    color: var(--text-dark); /* Keeps text readable when hovered */
+    background: #FFFFFF; /* Turns solid white */
+    color: var(--text-dark); /* Dark text on hover so it remains readable */
 }
 
 /* =========================================
@@ -390,13 +395,6 @@ h1, h2, h3 {
     opacity: 1; 
 }
 
-.circle-img {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    border-radius: 50%;
-}
-
 /* =========================================
    THE DOSSIER MODAL
    ========================================= */
@@ -495,7 +493,7 @@ h1, h2, h3 {
 }
 
 /* =========================================
-   FACILITIES GRID
+   FACILITIES GRID (NEW ARCHWAY LAYOUT)
    ========================================= */
 .facilities { background-color: var(--bg-canvas); }
 
@@ -506,9 +504,30 @@ h1, h2, h3 {
     margin-top: 50px;
 }
 
+.grid-item {
+    cursor: pointer;
+}
+
+/* The elegant new architectural pill/arch shape */
+.archway-img {
+    width: 100%;
+    aspect-ratio: 3 / 4; /* Tall, magazine-style format */
+    object-fit: cover;
+    border-radius: 150px 150px 20px 20px; /* Fully rounded top, soft corners bottom */
+    box-shadow: 0 10px 30px rgba(58, 53, 50, 0.08);
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease;
+}
+
+/* Smooth hovering physics */
+.grid-item:hover .archway-img {
+    transform: translateY(-15px);
+    box-shadow: 0 20px 40px rgba(58, 53, 50, 0.15);
+}
+
 .grid-item h3 {
     font-size: 1.2rem;
-    margin: 20px 0 10px 0;
+    margin: 25px 0 10px 0;
+    transition: color 0.3s ease;
 }
 
 .grid-item p {
@@ -693,6 +712,12 @@ h1, h2, h3 {
     .package-card {
         width: 250px;
         flex: 0 0 250px;
+    }
+
+    /* Keeps the archways looking tall on phones too */
+    .archway-img {
+        width: 80%;
+        margin: 0 auto;
     }
 
     .footer-left {
