@@ -148,11 +148,9 @@ h1, h2, h3 {
 .nav-links a:hover::after { width: 100%; }
 .sidebar-footer { margin-top: auto; }
 
-
 /* =========================================
    HERO SECTION (INDEX & SUBPAGES)
    ========================================= */
-/* Main Home Hero */
 .hero {
     position: relative;
     height: 100vh;
@@ -164,10 +162,9 @@ h1, h2, h3 {
     padding-left: 10%; 
 }
 
-/* Subpage About/Rituals Hero */
 .hero-sub {
     position: relative;
-    height: 60vh; /* Shorter for subpages! */
+    height: 60vh; 
     background: url('https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Second%20Pink%20Image.jpg') center/cover no-repeat;
     display: flex;
     align-items: center;
@@ -243,7 +240,6 @@ h1, h2, h3 {
     color: var(--text-dark); 
 }
 
-/* Stunning Glassmorphic Button */
 .btn-glass {
     display: inline-block;
     padding: 16px 45px;
@@ -265,7 +261,6 @@ h1, h2, h3 {
     transform: translateY(-3px);
 }
 
-/* Solid Black Pill Button */
 .btn-pill {
     display: inline-block;
     padding: 18px 50px;
@@ -291,13 +286,8 @@ h1, h2, h3 {
 /* =========================================
    ABOUT PAGE - EDITORIAL ZIG-ZAG
    ========================================= */
-.welcome-intro {
-    padding: 100px 20px 40px 20px;
-}
-
-.zig-zag-section {
-    padding-bottom: 100px;
-}
+.welcome-intro { padding: 100px 20px 40px 20px; }
+.zig-zag-section { padding-bottom: 100px; }
 
 .zig-zag-row {
     display: flex;
@@ -306,14 +296,9 @@ h1, h2, h3 {
     margin-bottom: 100px;
 }
 
-/* Reverses the order of the flexbox for the alternating look */
-.zig-zag-row.reverse {
-    flex-direction: row-reverse;
-}
+.zig-zag-row.reverse { flex-direction: row-reverse; }
 
-.zz-image, .zz-text {
-    flex: 1;
-}
+.zz-image, .zz-text { flex: 1; }
 
 .zz-image img {
     width: 100%;
@@ -323,19 +308,9 @@ h1, h2, h3 {
     box-shadow: 0 20px 50px rgba(58, 53, 50, 0.1);
 }
 
-.zz-text {
-    padding: 0 20px;
-}
-
-.zz-text h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-}
-
-.zz-text p {
-    color: var(--text-muted);
-    font-size: 1.05rem;
-}
+.zz-text { padding: 0 20px; }
+.zz-text h2 { font-size: 2.5rem; margin-bottom: 20px; }
+.zz-text p { color: var(--text-muted); font-size: 1.05rem; }
 
 .vertical-title {
     font-family: 'Open Sans', sans-serif;
@@ -350,7 +325,7 @@ h1, h2, h3 {
 }
 
 /* =========================================
-   PHILOSOPHY SECTION (INDEX)
+   PHILOSOPHY SECTION 
    ========================================= */
 .philosophy { background-color: var(--bg-canvas); }
 
@@ -361,39 +336,17 @@ h1, h2, h3 {
     align-items: center;
 }
 
-.philosophy-text {
-    text-align: center;
-    padding: 0 20px;
-}
-
-.philosophy-text h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-}
-
+.philosophy-text { text-align: center; padding: 0 20px; }
+.philosophy-text h2 { font-size: 2.5rem; margin-bottom: 20px; }
 .philosophy-text p { color: var(--text-muted); }
-
-.philosophy-action {
-    display: flex;
-    justify-content: center;
-}
+.philosophy-action { display: flex; justify-content: center; }
 
 /* =========================================
    PACKAGES HORIZONTAL SCROLL
    ========================================= */
-.packages {
-    background-color: #FFFFFF;
-}
-
-.packages h2 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-}
-
-.subtitle {
-    color: var(--text-muted);
-    margin-bottom: 15px;
-}
+.packages { background-color: #FFFFFF; }
+.packages h2 { font-size: 2.5rem; margin-bottom: 10px; }
+.subtitle { color: var(--text-muted); margin-bottom: 15px; }
 
 .scroll-indicator {
     font-family: 'Playfair Display', serif;
@@ -424,9 +377,7 @@ h1, h2, h3 {
     scrollbar-width: none; 
 }
 
-.horizontal-scroll::-webkit-scrollbar {
-    display: none; 
-}
+.horizontal-scroll::-webkit-scrollbar { display: none; }
 
 .package-card {
     width: 280px; 
@@ -438,14 +389,8 @@ h1, h2, h3 {
     flex-direction: column;
 }
 
-.package-card:hover {
-    transform: translateY(-5px);
-}
-
-.package-card h3 {
-    font-size: 1.2rem;
-    margin: 20px 0 5px 0;
-}
+.package-card:hover { transform: translateY(-5px); }
+.package-card h3 { font-size: 1.2rem; margin: 20px 0 5px 0; }
 
 .view-details {
     font-size: 1rem;
@@ -489,14 +434,10 @@ h1, h2, h3 {
 }
 
 .package-card:hover .square-img,
-.package-card:active .square-img {
-    transform: scale(1.08); 
-}
+.package-card:active .square-img { transform: scale(1.08); }
 
 .package-card:hover .image-wrapper::after,
-.package-card:active .image-wrapper::after {
-    opacity: 1; 
-}
+.package-card:active .image-wrapper::after { opacity: 1; }
 
 /* =========================================
    THE DOSSIER MODAL
@@ -517,10 +458,7 @@ h1, h2, h3 {
     padding: 20px;
 }
 
-.dossier-modal.active {
-    opacity: 1;
-    pointer-events: auto;
-}
+.dossier-modal.active { opacity: 1; pointer-events: auto; }
 
 .dossier-content {
     background: linear-gradient(rgba(250, 246, 242, 0.95), rgba(250, 246, 242, 0.95)), url('https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Pink%20Image.jpg') center/cover no-repeat;
@@ -534,9 +472,7 @@ h1, h2, h3 {
     transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.dossier-modal.active .dossier-content {
-    transform: scale(1);
-}
+.dossier-modal.active .dossier-content { transform: scale(1); }
 
 .close-dossier {
     position: absolute;
@@ -549,9 +485,7 @@ h1, h2, h3 {
     transition: transform 0.3s;
 }
 
-.close-dossier:hover {
-    transform: rotate(90deg);
-}
+.close-dossier:hover { transform: rotate(90deg); }
 
 .dossier-content h2 {
     font-size: 2rem; 
@@ -576,10 +510,7 @@ h1, h2, h3 {
     transition: all 0.4s ease;
 }
 
-.dossier-item.show {
-    opacity: 1;
-    transform: translateY(0);
-}
+.dossier-item.show { opacity: 1; transform: translateY(0); }
 
 .dossier-meta {
     display: flex;
@@ -591,9 +522,7 @@ h1, h2, h3 {
     color: var(--text-dark);
 }
 
-.dossier-action {
-    text-align: center;
-}
+.dossier-action { text-align: center; }
 
 /* =========================================
    FACILITIES GRID (ARCHWAY LAYOUT)
@@ -607,9 +536,7 @@ h1, h2, h3 {
     margin-top: 50px;
 }
 
-.grid-item {
-    cursor: pointer;
-}
+.grid-item { cursor: pointer; }
 
 .archway-img {
     width: 100%;
@@ -635,6 +562,194 @@ h1, h2, h3 {
     font-size: 0.9rem;
     color: var(--text-muted);
     line-height: 1.6;
+}
+
+/* =========================================
+   RITUALS PAGE COMPONENTS 
+   ========================================= */
+.treatment-category {
+    padding: 80px 0 100px 0;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+}
+
+.tint-1 { background-image: linear-gradient(rgba(224, 187, 187, 0.9), rgba(224, 187, 187, 0.9)), url('https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Pink%20Image.jpg'); }
+.tint-2 { background-image: linear-gradient(rgba(247, 234, 232, 0.9), rgba(247, 234, 232, 0.9)), url('https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Second%20Pink%20Image.jpg'); }
+.tint-3 { background-image: linear-gradient(rgba(248, 240, 237, 0.9), rgba(248, 240, 237, 0.9)), url('https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Spa%20image%203.png'); }
+.tint-4 { background-image: linear-gradient(rgba(250, 246, 242, 0.9), rgba(250, 246, 242, 0.9)), url('https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Theme%20Image%20Website%202.jpg'); }
+
+.category-header h2 { font-size: 2.8rem; margin-bottom: 10px; }
+
+.scroll-ltr { direction: ltr; } 
+.scroll-rtl { direction: rtl; } 
+.ltr-content { direction: ltr; }
+
+.treatment-card {
+    width: 300px;
+    height: 380px;
+    flex: 0 0 300px;
+    scroll-snap-align: center;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(58, 53, 50, 0.1);
+    cursor: pointer;
+    background-color: var(--bg-canvas); 
+}
+
+.t-img {
+    width: 100%;
+    height: 60%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.t-glass-info {
+    position: absolute;
+    bottom: 0; left: 0; width: 100%;
+    height: 40%;
+    background: rgba(250, 246, 242, 0.85); 
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.4s ease;
+}
+
+.t-glass-info h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+    color: var(--text-dark);
+}
+
+.t-glass-info p {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+}
+
+.t-book-overlay {
+    position: absolute;
+    bottom: 0; left: 0; width: 100%;
+    height: 40%;
+    background: var(--text-dark); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(100%); 
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    z-index: 2;
+}
+
+.treatment-card:hover .t-img,
+.treatment-card.active .t-img { transform: scale(1.08); }
+
+.treatment-card:hover .t-book-overlay,
+.treatment-card.active .t-book-overlay { transform: translateY(0); }
+
+/* =========================================
+   SPA ETIQUETTE
+   ========================================= */
+.spa-etiquette {
+    padding: 100px 20px;
+    background-color: var(--bg-canvas);
+}
+
+.etiquette-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr; 
+    gap: 60px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.etiquette-title h2 {
+    font-size: 3rem;
+    line-height: 1.1;
+    border-left: 2px solid var(--text-dark);
+    padding-left: 20px;
+}
+
+.e-block { margin-bottom: 40px; }
+
+.e-block h4 {
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    color: var(--text-dark);
+}
+
+.e-block p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+/* =========================================
+   ASYMMETRICAL GIFT CARD SECTION
+   ========================================= */
+.gift-card-section {
+    padding: 80px 20px 120px 20px;
+    background-color: #FFFFFF;
+}
+
+.gift-container {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.gift-image {
+    width: 65%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(58, 53, 50, 0.15);
+}
+
+.gift-image img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+}
+
+.gift-glass-box {
+    position: absolute;
+    right: 5%; 
+    width: 45%;
+    background: rgba(250, 246, 242, 0.7); 
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 60px 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 20px 50px rgba(58, 53, 50, 0.1);
+    text-align: left;
+}
+
+.gift-glass-box h2 {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+    line-height: 1.1;
+}
+
+.gift-glass-box p {
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    font-size: 1.05rem;
 }
 
 /* =========================================
@@ -676,9 +791,7 @@ h1, h2, h3 {
     transition: border 0.3s ease;
 }
 
-.newsletter-form input:focus {
-    border: 1px solid var(--text-dark);
-}
+.newsletter-form input:focus { border: 1px solid var(--text-dark); }
 
 .form-message {
     margin-top: 20px;
@@ -766,13 +879,8 @@ h1, h2, h3 {
     transition: color 0.3s ease;
 }
 
-.footer-legal .divider {
-    color: rgba(250, 246, 242, 0.3);
-}
-
-.footer-legal a:hover {
-    color: var(--bg-canvas);
-}
+.footer-legal .divider { color: rgba(250, 246, 242, 0.3); }
+.footer-legal a:hover { color: var(--bg-canvas); }
 
 .powered-by {
     font-size: 0.8rem;
@@ -801,15 +909,17 @@ h1, h2, h3 {
 .grid-item:nth-child(3).reveal-up { transition-delay: 0.4s; }
 
 /* =========================================
-   MOBILE RESPONSIVENESS
+   MOBILE RESPONSIVENESS (FULLY MERGED & SAFE)
    ========================================= */
 @media (max-width: 768px) {
-    .philosophy-grid, .grid-3, .footer-grid {
+    /* Grids */
+    .philosophy-grid, .grid-3, .footer-grid, .etiquette-grid {
         grid-template-columns: 1fr;
     }
 
     .container { padding: 60px 20px; }
     
+    /* Hero */
     .hero {
         padding-left: 5%;
         padding-right: 5%;
@@ -826,12 +936,10 @@ h1, h2, h3 {
     }
 
     .hero-sub {
-        height: 70vh; /* Gives the text slightly more room on tiny screens */
+        height: 70vh; 
     }
 
-    .philosophy-action { margin-top: 20px; }
-
-    /* EDITORIAL ZIG-ZAG MOBILE (Stacks neatly on phones) */
+    /* About Page Zig-Zag */
     .zig-zag-row, .zig-zag-row.reverse {
         flex-direction: column;
         gap: 30px;
@@ -841,7 +949,10 @@ h1, h2, h3 {
 
     .zz-text { padding: 0; }
 
-    .package-card {
+    /* Treatments / Packages */
+    .philosophy-action { margin-top: 20px; }
+
+    .package-card, .treatment-card {
         width: 250px;
         flex: 0 0 250px;
     }
@@ -851,6 +962,7 @@ h1, h2, h3 {
         margin: 0 auto;
     }
 
+    /* Newsletter & Footer */
     .newsletter-form {
         flex-direction: column;
         gap: 15px;
@@ -864,6 +976,19 @@ h1, h2, h3 {
         padding-bottom: 40px;
     }
 
+    .footer-left {
+        padding: 60px 20px;
+        text-align: center;
+    }
+
+    .footer-right img { height: 350px; }
+
+    .site-footer {
+        padding: 60px 20px 30px 20px;
+        text-align: center;
+    }
+
+    /* Sidebar & Modals */
     .reveal-up { transform: translateY(20px); }
 
     .glass-sidebar { width: 100vw; padding: 100px 30px; }
@@ -871,4 +996,31 @@ h1, h2, h3 {
 
     .dossier-content { padding: 40px 25px; }
     .dossier-meta { flex-direction: column; gap: 10px; text-align: center; }
+
+    /* Etiquette & Gift Card */
+    .etiquette-grid { gap: 30px; }
+    
+    .etiquette-title h2 {
+        border-left: none;
+        padding-left: 0;
+        border-bottom: 2px solid var(--text-dark);
+        padding-bottom: 20px;
+    }
+
+    .gift-container {
+        flex-direction: column;
+    }
+
+    .gift-image {
+        width: 100%;
+    }
+
+    .gift-glass-box {
+        position: relative;
+        right: 0;
+        width: 90%;
+        margin-top: -50px; 
+        padding: 40px 20px;
+        text-align: center;
+    }
 }
