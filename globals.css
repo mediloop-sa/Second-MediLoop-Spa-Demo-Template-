@@ -11,7 +11,7 @@
     --baked-clay: #D4A373;
     --sun-faded-ochre: #EBCF98;
     --soft-taupe: #BEA991;
-    
+
     /* Grounding Colors */
     --bg-canvas: #FAF6F2;     /* A breathable, ultra-light sandy off-white for the main background */
     --text-main: #3A2E28;     /* A deep, warm espresso instead of harsh black for typography */
@@ -28,8 +28,13 @@ html, body {
     font-family: 'Open Sans', sans-serif;
 }
 
+h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif; /* Elegant, editorial serif for this template */
+    font-weight: 400;
+}
+
 /* =========================================
-   STAGE 2: EDITORIAL HERO STACK CSS (REFINED)
+   STAGE 2: EDITORIAL HERO STACK CSS (FINAL)
    ========================================= */
 
 .hero-stack-section {
@@ -39,20 +44,20 @@ html, body {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    /* 1. We kill the flat white with a soft, warm radial glow */
-    background: radial-gradient(circle at 50% 40%, var(--warm-sand) 0%, var(--bg-canvas) 80%);
+    /* 1. The Full-Bleed Background Image */
+    background-image: url('https://images.unsplash.com/photo-1473448912268-2022ce9509d8?q=80&w=2000&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
     padding: 20px;
 }
 
-/* 2. We add a subtle, expensive sand/paper texture over the background */
+/* A soft, tinted frost over the background image so it doesn't clash with the stack */
 .hero-stack-section::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
-    opacity: 0.7;
+    background: rgba(250, 246, 242, 0.85); /* Uses your canvas color for cohesion */
     z-index: 0;
-    pointer-events: none;
 }
 
 .hero-stack-container {
@@ -60,10 +65,10 @@ html, body {
     width: 100%;
     max-width: 1200px;
     height: 80vh;
-    z-index: 1; /* Keeps images above the texture */
+    z-index: 1; 
 }
 
-/* Base style for all images to give them that luxury finish */
+/* Base style for all images */
 .stack-img {
     position: absolute;
     object-fit: cover;
@@ -94,7 +99,7 @@ html, body {
     z-index: 3;
 }
 
-/* Desktop Text Formatting */
+/* Typography Formatting */
 .hero-text-overlay {
     position: absolute;
     z-index: 10;
@@ -103,56 +108,53 @@ html, body {
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none; 
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the pill perfectly */
 }
 
 .hero-title {
-    font-size: 5rem;
-    letter-spacing: 24px;
+    /* 2. Fluid scaling and forced single-line text */
+    font-size: clamp(1.8rem, 6vw, 5rem); 
+    letter-spacing: clamp(6px, 2vw, 24px);
+    white-space: nowrap; /* Strictly forbids breaking into two lines */
     color: var(--rich-terracotta);
     margin: 0 0 15px 0;
     text-shadow: 0 10px 30px rgba(250, 246, 242, 0.95); 
 }
 
 .hero-subtitle {
-    font-size: 1rem;
+    font-size: 0.85rem;
     letter-spacing: 6px;
     text-transform: uppercase;
     color: var(--text-main);
-    background: rgba(250, 246, 242, 0.75); 
+    background: rgba(250, 246, 242, 0.85); 
     padding: 12px 30px;
     display: inline-block;
     border-radius: 40px;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Adds slight depth to the pill */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    /* 3. Stops the pill from bleeding off the screen */
+    max-width: 90%; 
+    box-sizing: border-box;
+    white-space: normal; /* Allows the quote to wrap neatly if needed */
+    line-height: 1.6;
 }
 
-/* 📱 MOBILE RESPONSIVENESS (The layout fix) */
+/* 📱 MOBILE RESPONSIVENESS */
 @media (max-width: 768px) {
     .hero-stack-section {
         flex-direction: column;
         justify-content: flex-start;
-        padding-top: 80px; /* Pushes everything down neatly */
+        padding-top: 80px; 
     }
 
     .hero-text-overlay {
         position: relative;
         top: 0;
         transform: translateY(0);
-        margin-bottom: 40px; /* Space between text and images */
-        z-index: 10;
-    }
-
-    .hero-title {
-        font-size: 2.2rem;
-        letter-spacing: 12px;
-        margin-left: 12px; 
-    }
-
-    .hero-subtitle {
-        font-size: 0.65rem;
-        padding: 10px 20px;
-        white-space: nowrap;
+        margin-bottom: 40px; 
     }
 
     .hero-stack-container {
@@ -160,7 +162,6 @@ html, body {
         margin-top: 0;
     }
     
-    /* Cascading the images so they breathe */
     .main-img {
         width: 75%; height: 60%;
         top: 45%; left: 50%;
@@ -177,9 +178,4 @@ html, body {
         top: 65%; right: 5%;
         transform: translateY(0);
     }
-}
-
-h1, h2, h3, h4 {
-    font-family: 'Playfair Display', serif; /* Elegant, editorial serif for this template */
-    font-weight: 400;
 }
