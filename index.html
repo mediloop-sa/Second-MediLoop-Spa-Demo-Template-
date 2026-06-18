@@ -31,7 +31,7 @@
 
     <header class="hero">
         <div class="hero-nav reveal-up">
-            <span class="logo-icon">\\\///</span>
+            <span class="logo-icon">🌿</span>
             <span class="logo-text">Lumière Spa</span>
         </div>
         
@@ -58,27 +58,48 @@
     <section class="packages">
         <div class="container text-center">
             <h2 class="reveal-up">Our Packages</h2>
-            <p class="subtitle reveal-up">We have a variety of services to ensure your wellness.</p>
+            <p class="subtitle reveal-up">Curated journeys to restore your glow.</p>
+            
+            <div class="scroll-indicator reveal-up">Swipe to explore <span>⟶</span></div>
 
-            <div class="grid-3">
-                <div class="grid-item reveal-up">
+            <div class="horizontal-scroll reveal-up">
+                
+                <div class="package-card" 
+                     data-title="The Golden Hour" 
+                     data-items="45 Min Back, Neck & Shoulder Massage|45 Min Luminous Glow Facial|Warm Foot Paraffin Dip|Spa Lunch & Herbal Tea" 
+                     data-time="2 Hours 30 Mins" 
+                     data-price="R 1,850">
                     <div class="image-wrapper">
-                        <img src="https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Theme%20Image%20Website%202.jpg" alt="Facials" class="square-img">
+                        <img src="https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Theme%20Image%20Website%202.jpg" alt="Golden Hour" class="square-img">
                     </div>
-                    <h3>Facials</h3>
+                    <h3>The Golden Hour</h3>
+                    <p class="view-details">Tap for details</p>
                 </div>
-                <div class="grid-item reveal-up">
+
+                <div class="package-card" 
+                     data-title="Deep Earth Detox" 
+                     data-items="60 Min Deep Tissue Massage|Himalayan Salt Scrub|Detoxifying Mud Wrap|Cold-Pressed Green Juice" 
+                     data-time="2 Hours 15 Mins" 
+                     data-price="R 1,600">
                     <div class="image-wrapper">
-                        <img src="https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Theme%20Image%201.png" alt="Massage" class="square-img">
+                        <img src="https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Theme%20Image%201.png" alt="Detox" class="square-img">
                     </div>
-                    <h3>Massage</h3>
+                    <h3>Deep Earth Detox</h3>
+                    <p class="view-details">Tap for details</p>
                 </div>
-                <div class="grid-item reveal-up">
+
+                <div class="package-card" 
+                     data-title="The Serenity Escape" 
+                     data-items="90 Min Aromatherapy Massage|30 Min Reflexology|Scalp Tension Release" 
+                     data-time="2 Hours" 
+                     data-price="R 1,450">
                     <div class="image-wrapper">
-                        <img src="https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Social%20Media%204.png" alt="Treatments" class="square-img">
+                        <img src="https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Social%20Media%204.png" alt="Serenity" class="square-img">
                     </div>
-                    <h3>Treatments</h3>
+                    <h3>The Serenity</h3>
+                    <p class="view-details">Tap for details</p>
                 </div>
+
             </div>
         </div>
     </section>
@@ -131,17 +152,32 @@
         </div>
     </footer>
 
+    <div class="dossier-modal" id="dossierModal">
+        <div class="dossier-content">
+            <button class="close-dossier" id="closeDossier">&times;</button>
+            
+            <h2 id="modalTitle">Package Name</h2>
+            
+            <ul class="dossier-list" id="modalList">
+                </ul>
+            
+            <div class="dossier-meta">
+                <span class="dossier-time" id="modalTime">Time</span>
+                <span class="dossier-price" id="modalPrice">Price</span>
+            </div>
+            
+            <div class="dossier-action">
+                <a href="#book" class="btn-pill" onclick="document.getElementById('dossierModal').classList.remove('active');">Book Treatment</a>
+            </div>
+        </div>
+    </div>
+
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             
-            // 1. CINEMATIC SCROLL REVEAL (Intersection Observer)
+            // 1. CINEMATIC SCROLL REVEAL 
             const revealElements = document.querySelectorAll('.reveal-up');
-            
-            const revealOptions = {
-                threshold: 0.15,
-                rootMargin: "0px 0px -50px 0px"
-            };
-
+            const revealOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
             const revealOnScroll = new IntersectionObserver(function(entries, observer) {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -164,14 +200,53 @@
             const glassSidebar = document.getElementById('glassSidebar');
 
             if(menuToggle && closeMenu && glassSidebar) {
-                menuToggle.addEventListener('click', () => {
-                    glassSidebar.classList.add('active');
-                });
-
-                closeMenu.addEventListener('click', () => {
-                    glassSidebar.classList.remove('active');
-                });
+                menuToggle.addEventListener('click', () => glassSidebar.classList.add('active'));
+                closeMenu.addEventListener('click', () => glassSidebar.classList.remove('active'));
             }
+
+            // 3. THE DOSSIER MODAL LOGIC
+            const modal = document.getElementById('dossierModal');
+            const closeDossier = document.getElementById('closeDossier');
+            const packageCards = document.querySelectorAll('.package-card');
+            
+            // When a package is clicked...
+            packageCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    // Update Text
+                    document.getElementById('modalTitle').textContent = card.dataset.title;
+                    document.getElementById('modalTime').textContent = card.dataset.time;
+                    document.getElementById('modalPrice').textContent = card.dataset.price;
+                    
+                    // Build the staggered list
+                    const list = document.getElementById('modalList');
+                    list.innerHTML = ''; // Clear old items
+                    const items = card.dataset.items.split('|'); // Splits the text at the '|' symbol
+                    
+                    items.forEach((item, index) => {
+                        const li = document.createElement('li');
+                        li.textContent = item;
+                        li.className = 'dossier-item';
+                        // Calculates staggered delay so they pop up one after the other
+                        li.style.transitionDelay = `${0.2 + (index * 0.15)}s`; 
+                        list.appendChild(li);
+                    });
+
+                    // Open Modal
+                    modal.classList.add('active');
+                    
+                    // Trigger the animation for the newly created list items
+                    setTimeout(() => {
+                        document.querySelectorAll('.dossier-item').forEach(li => li.classList.add('show'));
+                    }, 50);
+                });
+            });
+
+            // Close modal functions
+            if(closeDossier) closeDossier.addEventListener('click', () => modal.classList.remove('active'));
+            // Close if clicking the background
+            window.addEventListener('click', (e) => {
+                if (e.target === modal) modal.classList.remove('active');
+            });
         });
     </script>
 </body>
