@@ -5,10 +5,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Open+Sans:wght@300;400;600&display=swap');
 
 :root {
-    --bg-canvas: #FAFAF8;      /* Soft, warm cream background */
-    --text-dark: #3A3532;      /* Deep charcoal instead of harsh black */
-    --text-muted: #6B635E;     /* Softer text for paragraphs */
-    --blush-pink: #F7EAE8;     /* Very pale pink for the footer block */
+    --bg-canvas: #FAFAF8;      
+    --text-dark: #3A3532;      
+    --text-muted: #6B635E;     
+    --blush-pink: #F7EAE8;     
 }
 
 * {
@@ -41,12 +41,120 @@ h1, h2, h3 {
 }
 
 /* =========================================
+   GLASSMORPHIC SIDEBAR NAVIGATION
+   ========================================= */
+.menu-toggle {
+    position: fixed;
+    top: 40px;
+    right: 5%; 
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.15); 
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px; 
+    transition: all 0.3s ease;
+}
+
+.menu-toggle:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+.hamburger-line {
+    width: 22px;
+    height: 2px;
+    background-color: #FFFFFF;
+    transition: all 0.3s ease;
+}
+
+.glass-sidebar {
+    position: fixed;
+    top: 0;
+    right: -100%; 
+    width: 450px;
+    max-width: 100vw;
+    height: 100vh;
+    background: rgba(250, 246, 242, 0.85); 
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    z-index: 1001; 
+    padding: 100px 50px;
+    display: flex;
+    flex-direction: column;
+    transition: right 0.7s cubic-bezier(0.25, 1, 0.5, 1); 
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: -15px 0 40px rgba(58, 53, 50, 0.1);
+}
+
+.glass-sidebar.active { right: 0; }
+
+.close-menu {
+    position: absolute;
+    top: 40px;
+    right: 5%;
+    width: 55px;
+    height: 55px;
+    background: transparent;
+    border: none;
+    font-size: 2.5rem;
+    color: var(--text-dark);
+    font-weight: 300;
+    cursor: pointer;
+    transition: transform 0.4s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.close-menu:hover { transform: rotate(90deg); }
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 50px 0;
+}
+
+.nav-links li { margin-bottom: 25px; }
+
+.nav-links a {
+    text-decoration: none;
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: var(--text-dark);
+    transition: color 0.3s ease;
+    position: relative;
+    display: inline-block;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 5px; left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--text-dark);
+    transition: width 0.4s ease;
+}
+
+.nav-links a:hover::after { width: 100%; }
+.sidebar-footer { margin-top: auto; }
+
+
+/* =========================================
    HERO SECTION (LEFT-ALIGNED EDITORIAL)
    ========================================= */
 .hero {
     position: relative;
     height: 100vh;
-    /* FIXED: Using the correct 'Second Pink Image' link! */
     background: url('https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Second%20Pink%20Image.jpg') center/cover no-repeat;
     display: flex;
     align-items: center;
@@ -55,7 +163,6 @@ h1, h2, h3 {
     padding-left: 10%; 
 }
 
-/* The Logo Bar */
 .hero-nav {
     position: absolute;
     top: 50px;
@@ -63,40 +170,48 @@ h1, h2, h3 {
     display: flex;
     align-items: center;
     gap: 12px;
-    color: #FFFFFF; /* Switched to white */
+    color: #FFFFFF; 
 }
+
+.logo-icon { font-size: 1.5rem; }
+.logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.hero-content { max-width: 550px; }
 
 .hero-content h1 {
     font-size: clamp(3.5rem, 6vw, 5.5rem);
-    color: #FFFFFF; /* Switched to white */
+    color: #FFFFFF;
     margin-bottom: 20px;
     line-height: 1.1;
     letter-spacing: -1px; 
 }
 
-/* The elegant dividing line */
 .hero-divider {
     border: 0;
     height: 1px;
-    background-color: #FFFFFF; /* Switched to white */
+    background-color: #FFFFFF;
     width: 100%;
     margin-bottom: 25px;
-    opacity: 0.5; /* Bumped opacity slightly so the white line stands out */
+    opacity: 0.5;
 }
 
 .hero-subtext {
     font-size: 1.1rem;
-    color: #FFFFFF; /* Switched to white */
+    color: #FFFFFF;
     margin-bottom: 40px;
     line-height: 1.6;
 }
 
-/* The Outline Pill Button */
 .btn-outline {
     display: inline-block;
     padding: 14px 40px;
-    border: 1px solid #FFFFFF; /* Switched to white */
-    color: #FFFFFF; /* Switched to white */
+    border: 1px solid #FFFFFF;
+    color: #FFFFFF;
     text-decoration: none;
     font-size: 1rem;
     border-radius: 50px; 
@@ -105,15 +220,13 @@ h1, h2, h3 {
 
 .btn-outline:hover {
     background: #FFFFFF;
-    color: var(--text-dark); /* Keeps the text dark and readable when hovered */
+    color: var(--text-dark);
 }
 
 /* =========================================
    PHILOSOPHY SECTION 
    ========================================= */
-.philosophy {
-    background-color: var(--bg-canvas);
-}
+.philosophy { background-color: var(--bg-canvas); }
 
 .philosophy-grid {
     display: grid;
@@ -132,16 +245,13 @@ h1, h2, h3 {
     margin-bottom: 20px;
 }
 
-.philosophy-text p {
-    color: var(--text-muted);
-}
+.philosophy-text p { color: var(--text-muted); }
 
 .philosophy-action {
     display: flex;
     justify-content: center;
 }
 
-/* The Solid Pill Button */
 .btn-pill {
     display: inline-block;
     padding: 18px 50px;
@@ -154,6 +264,8 @@ h1, h2, h3 {
     border-radius: 50px;
     box-shadow: 0 10px 20px rgba(58, 53, 50, 0.15);
     transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
 }
 
 .btn-pill:hover {
@@ -163,25 +275,232 @@ h1, h2, h3 {
 }
 
 /* =========================================
-   PACKAGES & FACILITIES (GRIDS)
+   PACKAGES HORIZONTAL SCROLL 
    ========================================= */
 .packages {
     background-color: #FFFFFF;
 }
 
-.facilities {
-    background-color: var(--bg-canvas);
-}
-
-.packages h2, .facilities h2 {
+.packages h2 {
     font-size: 2.5rem;
     margin-bottom: 10px;
 }
 
 .subtitle {
     color: var(--text-muted);
-    margin-bottom: 60px;
+    margin-bottom: 15px;
 }
+
+/* The elegant 'Swipe to explore' indicator */
+.scroll-indicator {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--text-dark);
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    opacity: 0.7;
+}
+
+.scroll-indicator span {
+    display: inline-block;
+    animation: drift 1.5s infinite alternate ease-in-out;
+}
+
+@keyframes drift {
+    from { transform: translateX(0); }
+    to { transform: translateX(8px); }
+}
+
+/* The Horizontal Carousel Container */
+.horizontal-scroll {
+    display: flex;
+    gap: 30px;
+    overflow-x: auto;
+    padding: 20px 0 40px 0;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+}
+
+.horizontal-scroll::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+
+/* The Clickable Package Card */
+.package-card {
+    min-width: 320px; 
+    flex: 0 0 auto;
+    scroll-snap-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.package-card:hover {
+    transform: translateY(-5px);
+}
+
+.package-card h3 {
+    font-size: 1.2rem;
+    margin: 20px 0 5px 0;
+}
+
+.view-details {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--text-muted);
+    display: inline-block;
+    padding-bottom: 2px;
+}
+
+/* Interactive Image Soft Corners */
+.image-wrapper {
+    position: relative;
+    overflow: hidden; 
+    border-radius: 20px; 
+}
+
+.square-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); 
+}
+
+.image-wrapper::after {
+    content: 'View Package';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(247, 234, 232, 0.85); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    letter-spacing: 2px;
+    transition: opacity 0.5s ease;
+}
+
+.package-card:hover .square-img,
+.package-card:active .square-img {
+    transform: scale(1.08); 
+}
+
+.package-card:hover .image-wrapper::after,
+.package-card:active .image-wrapper::after {
+    opacity: 1; 
+}
+
+/* =========================================
+   THE DOSSIER MODAL (MONOCHROMATIC PINK)
+   ========================================= */
+.dossier-modal {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Darkens the page behind it */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    padding: 20px;
+}
+
+.dossier-modal.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.dossier-content {
+    /* Beautiful monochromatic pink tinted background */
+    background: linear-gradient(rgba(247, 234, 232, 0.95), rgba(228, 195, 195, 0.95)), url('https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Pink%20Image.jpg') center/cover no-repeat;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 30px; /* Soft pill shape */
+    padding: 50px 40px;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+    transform: scale(0.95);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.dossier-modal.active .dossier-content {
+    transform: scale(1);
+}
+
+.close-dossier {
+    position: absolute;
+    top: 20px; right: 25px;
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.close-dossier:hover {
+    transform: rotate(90deg);
+}
+
+.dossier-content h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--text-dark);
+}
+
+/* Staggered Treatment List */
+.dossier-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px 0;
+}
+
+.dossier-item {
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(58, 53, 50, 0.1);
+    
+    /* Animation setup */
+    opacity: 0;
+    transform: translateY(15px);
+    transition: all 0.4s ease;
+}
+
+.dossier-item.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Time & Price Bottom Bar */
+.dossier-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--text-dark);
+}
+
+.dossier-action {
+    text-align: center;
+}
+
+/* =========================================
+   FACILITIES GRID (Retained from original)
+   ========================================= */
+.facilities { background-color: var(--bg-canvas); }
 
 .grid-3 {
     display: grid;
@@ -199,50 +518,6 @@ h1, h2, h3 {
     font-size: 0.9rem;
     color: var(--text-muted);
     line-height: 1.6;
-}
-
-/* =========================================
-   INTERACTIVE IMAGE SHAPES
-   ========================================= */
-.image-wrapper {
-    position: relative;
-    overflow: hidden; 
-    cursor: pointer;
-    border-radius: 20px; 
-}
-
-.square-img {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); 
-}
-
-.image-wrapper::after {
-    content: 'View Ritual';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(247, 234, 232, 0.85); 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-    color: var(--text-dark);
-    letter-spacing: 2px;
-    transition: opacity 0.5s ease;
-}
-
-.image-wrapper:hover .square-img,
-.image-wrapper:active .square-img {
-    transform: scale(1.08); 
-}
-
-.image-wrapper:hover::after,
-.image-wrapper:active::after {
-    opacity: 1; 
 }
 
 .circle-img {
@@ -275,9 +550,7 @@ h1, h2, h3 {
     line-height: 1.3;
 }
 
-.contact-block {
-    margin-bottom: 30px;
-}
+.contact-block { margin-bottom: 30px; }
 
 .contact-block h4 {
     font-family: 'Open Sans', sans-serif;
@@ -299,131 +572,6 @@ h1, h2, h3 {
     height: 100%;
     object-fit: cover;
     display: block;
-}
-
-/* =========================================
-   GLASSMORPHIC SIDEBAR NAVIGATION
-   ========================================= */
-
-/* The floating glass button */
-.menu-toggle {
-    position: fixed;
-    top: 40px;
-    right: 5%; 
-    z-index: 1000;
-    background: rgba(255, 255, 255, 0.15); /* Subtle glass */
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    border-radius: 50%;
-    width: 55px;
-    height: 55px;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 6px; /* Space between the two elegant lines */
-    transition: all 0.3s ease;
-}
-
-.menu-toggle:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: scale(1.05);
-}
-
-.hamburger-line {
-    width: 22px;
-    height: 2px;
-    background-color: #FFFFFF;
-    transition: all 0.3s ease;
-}
-
-/* The Frosted Glass Panel */
-.glass-sidebar {
-    position: fixed;
-    top: 0;
-    right: -100%; /* Hidden off-screen by default */
-    width: 450px;
-    max-width: 100vw;
-    height: 100vh;
-    background: rgba(250, 246, 242, 0.85); /* Tinted cream glass */
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    z-index: 1001; /* Sits above everything */
-    padding: 100px 50px;
-    display: flex;
-    flex-direction: column;
-    transition: right 0.7s cubic-bezier(0.25, 1, 0.5, 1); /* Buttery smooth slide */
-    border-left: 1px solid rgba(255, 255, 255, 0.5);
-    box-shadow: -15px 0 40px rgba(58, 53, 50, 0.1);
-}
-
-.glass-sidebar.active {
-    right: 0; /* Slides into view */
-}
-
-/* The elegant close 'X' */
-.close-menu {
-    position: absolute;
-    top: 40px;
-    right: 5%;
-    width: 55px;
-    height: 55px;
-    background: transparent;
-    border: none;
-    font-size: 2.5rem;
-    color: var(--text-dark);
-    font-weight: 300;
-    cursor: pointer;
-    transition: transform 0.4s ease;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.close-menu:hover {
-    transform: rotate(90deg); /* Beautiful spin on hover */
-}
-
-/* Sidebar Typography */
-.nav-links {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 50px 0;
-}
-
-.nav-links li {
-    margin-bottom: 25px;
-}
-
-.nav-links a {
-    text-decoration: none;
-    font-family: 'Playfair Display', serif;
-    font-size: 3rem;
-    color: var(--text-dark);
-    transition: color 0.3s ease;
-    position: relative;
-    display: inline-block;
-}
-
-/* Animated underline on hover */
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: 5px; left: 0;
-    width: 0;
-    height: 1px;
-    background-color: var(--text-dark);
-    transition: width 0.4s ease;
-}
-
-.nav-links a:hover::after {
-    width: 100%;
-}
-
-.sidebar-footer {
-    margin-top: auto; /* Pushes the button to the bottom */
 }
 
 /* =========================================
@@ -452,42 +600,31 @@ h1, h2, h3 {
         grid-template-columns: 1fr;
     }
 
-    .container {
-        padding: 60px 20px;
-    }
+    .container { padding: 60px 20px; }
     
-    /* Left-align mobile fixes */
-    .hero {
-        padding-left: 5%;
-        padding-right: 5%;
-    }
+    .hero { padding-left: 5%; padding-right: 5%; }
     
-    .hero-nav {
-        left: 5%;
-        top: 30px;
-    }
+    .hero-nav { left: 5%; top: 30px; }
 
     .hero-content h1 {
         font-size: 3.2rem;
         margin-bottom: 15px;
     }
 
-    .philosophy-action {
-        margin-top: 20px;
-    }
+    .philosophy-action { margin-top: 20px; }
 
     .footer-left {
         padding: 60px 20px;
         text-align: center;
     }
 
-    .footer-right img {
-        height: 350px; 
-    }
+    .footer-right img { height: 350px; }
 
-    .reveal-up {
-        transform: translateY(20px);
-    }
-.glass-sidebar { width: 100vw; padding: 100px 30px; }
+    .reveal-up { transform: translateY(20px); }
+
+    .glass-sidebar { width: 100vw; padding: 100px 30px; }
     .nav-links a { font-size: 2.2rem; }
+
+    .dossier-content { padding: 40px 25px; }
+    .dossier-meta { flex-direction: column; gap: 10px; }
 }
