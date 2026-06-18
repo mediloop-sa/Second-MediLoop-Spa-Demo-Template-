@@ -3,113 +3,224 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MediLoop | Journal & Press</title>
+    <title>Modern Spa | Press & Gallery</title>
     <link rel="stylesheet" href="globals.css">
 </head>
 <body>
 
-    <!-- PERFECTED NAVIGATION BAR -->
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="rituals.html">Rituals</a>
-        <a href="rewards.html">Rewards</a>
-        <a href="press.html">Press</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open Menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+    </button>
+
+    <nav class="glass-sidebar" id="glassSidebar">
+        <button class="close-menu" id="closeMenu" aria-label="Close Menu">&times;</button>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="rituals.html">Rituals</a></li>
+            <li><a href="rewards.html">Rewards</a></li>
+            <li><a href="press.html">Press</a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <a href="#book" class="btn-pill" style="padding: 12px 30px; font-size: 0.8rem;">Book Now</a>
+        </div>
     </nav>
 
-        <!-- NEW SPLIT EDITORIAL HERO -->
-    <header class="hero subpage-hero-new">
-        <div class="container hero-split">
-            <!-- Left Side: Typography -->
-            <div class="hero-left">
-                <h1>THE JOURNAL</h1>
-                <hr class="hero-line">
-                <p>Insights, press, and wellness philosophy.</p>
-            </div>
-            <!-- Right Side: Glassmorphic CTA -->
-            <div class="hero-right">
-                <a href="#" class="btn-glass">SUBSCRIBE</a>
-            </div>
+    <header class="hero-sub">
+        <div class="hero-nav reveal-up">
+            <span class="logo-icon">🌿</span>
+            <span class="logo-text">Lumière Spa</span>
+        </div>
+        
+        <div class="hero-content text-center">
+            <h1 class="reveal-up">Press & Gallery</h1>
+            <hr class="hero-divider reveal-up" style="transition-delay: 0.1s; margin: 20px auto; width: 60px;">
+            <p class="hero-subtext italic-quote reveal-up" style="transition-delay: 0.2s;">"A visual diary and words of praise."</p>
         </div>
     </header>
 
-    <!-- GLASSMORPHIC ARTICLE FEED -->
-    <section class="journal-feed-section">
-        <div class="container">
-            
-            <!-- Article 1 (Image Left) -->
-            <a href="#" class="glass-article">
-                <div class="article-image-box">
-                    <img src="https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Social%20Media%204.png" alt="Journal Image">
-                </div>
-                <div class="article-content">
-                    <span class="article-category">Vogue Wellness</span>
-                    <h3 class="article-title">The Rise of the Modern Sanctuary</h3>
-                    <p class="article-snippet">How this minimalist escape is redefining what it means to truly disconnect. A look inside the architecture of silence and holistic restoration.</p>
-                    <span class="read-more">Read Full Article <span class="arrow">→</span></span>
-                </div>
-            </a>
-
-            <!-- Article 2 (Image Right) -->
-            <a href="#" class="glass-article reverse">
-                <div class="article-image-box">
-                    <img src="https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Spa%20Image%201.png" alt="Journal Image">
-                </div>
-                <div class="article-content">
-                    <span class="article-category">Our Philosophy</span>
-                    <h3 class="article-title">Why We Source Local Botanicals</h3>
-                    <p class="article-snippet">True healing begins with the earth. Discover the farms and artisans behind our cold-pressed eucalyptus, organic rosehip, and mineral salts.</p>
-                    <span class="read-more">Read Full Article <span class="arrow">→</span></span>
-                </div>
-            </a>
-
-            <!-- Article 3 (Image Left) -->
-            <a href="#" class="glass-article">
-                <div class="article-image-box">
-                    <img src="https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Social%20Media.png" alt="Journal Image">
-                </div>
-                <div class="article-content">
-                    <span class="article-category">The Lux Insider</span>
-                    <h3 class="article-title">An Absolute Triumph in Wellness</h3>
-                    <p class="article-snippet">From the moment you step through the doors, the atmosphere demands profound relaxation. A review of the signature Deep Tissue Harmony ritual.</p>
-                    <span class="read-more">Read Full Article <span class="arrow">→</span></span>
-                </div>
-            </a>
-
-        </div>
-    </section>
-
-    <!-- THE FINAL QUOTE BREAK -->
-    <section class="final-quote-section">
+    <section class="gallery-section reveal-up">
         <div class="container text-center">
-            <h3 class="final-quote-text">"Silence isn't empty. It is full of answers."</h3>
-            <hr class="elegant-line" style="background: rgba(255,255,255,0.2);">
+            <h2 style="font-size: 2.5rem; margin-bottom: 10px;">The Visual Diary</h2>
+            <p class="subtitle" style="margin-bottom: 60px;">Glimpses of our sanctuary and the art of our practice.</p>
+
+            <div class="editorial-gallery">
+                <div class="gal-img feat-large reveal-up">
+                    <img src="https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Theme%20Image%201.png" alt="Spa Ambience">
+                </div>
+                <div class="gal-img feat-tall reveal-up" style="transition-delay: 0.1s;">
+                    <img src="https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Theme%20Image%20Website%202.jpg" alt="Treatments">
+                </div>
+                <div class="gal-img reveal-up" style="transition-delay: 0.2s;">
+                    <img src="https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Spa%20image%203.png" alt="Oils">
+                </div>
+                <div class="gal-img feat-wide reveal-up">
+                    <img src="https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Social%20Media%204.png" alt="Relaxation">
+                </div>
+                <div class="gal-img reveal-up" style="transition-delay: 0.1s;">
+                    <img src="https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Theme%20Image%20Website%202.jpg" alt="Interior">
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- STRICT DARK FOOTER -->
-    <footer class="footer-dark">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4>Contact Us</h4>
-                <p>Email: hello@mediloopspa.co.za</p>
-                <p>Phone: +27 12 345 6789</p>
+    <section class="press-parallax">
+        <div class="container">
+            <div class="category-header reveal-up text-center" style="color: #FFFFFF;">
+                <h2 style="color: #FFFFFF;">Loved By Many</h2>
+                <div class="scroll-indicator" style="color: #FFFFFF; opacity: 0.9;">Swipe to read <span>⟶</span></div>
             </div>
-            <div class="footer-col">
-                <h4>Operating Hours</h4>
-                <p>Monday - Friday</p>
-                <p>08h00 - 17h00</p>
-            </div>
-            <div class="footer-col">
-                <h4>Legal</h4>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms & Conditions</a>
+
+            <div class="horizontal-scroll scroll-ltr reveal-up" style="padding-bottom: 60px;">
+                
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"An absolute revelation. The attention to detail and the serene atmosphere make it impossible not to completely let go. The best facial I have ever experienced."</p>
+                    <hr class="review-line">
+                    <h4>Vogue Beauty Editor</h4>
+                </div>
+
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"Stepping into Lumière is like stepping out of the city and into a cloud. The Hot Stone Melt completely erased months of accumulated tension."</p>
+                    <hr class="review-line">
+                    <h4>Sarah M.</h4>
+                    <span class="verified">Verified Client</span>
+                </div>
+
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"Impeccable service, stunning interiors, and therapists who truly understand the body. It is the ultimate luxury escape."</p>
+                    <hr class="review-line">
+                    <h4>Elle Magazine</h4>
+                </div>
+
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"I purchased a gift card for my mother, and the team treated her like absolute royalty. I cannot recommend this sanctuary enough."</p>
+                    <hr class="review-line">
+                    <h4>Jessica T.</h4>
+                    <span class="verified">Verified Client</span>
+                </div>
+
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>Powered by <a href="https://mediloop.co.za">MediLoop Websites</a></p>
+    </section>
+
+    <section class="newsletter reveal-up" id="book">
+        <div class="container text-center">
+            <h2>Join Our Mailing List</h2>
+            <p class="subtitle">Subscribe to receive exclusive offers, wellness tips, and spa news.</p>
+            
+            <form id="newsletterForm" class="newsletter-form">
+                <input type="email" id="emailInput" placeholder="Enter your email address" required>
+                <button type="submit" class="btn-pill" id="subscribeBtn">Subscribe</button>
+            </form>
+            <p id="formMessage" class="form-message"></p>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-top reveal-up">
+                <h3 class="footer-logo"><span class="logo-icon">🌿</span> Lumière Spa</h3>
+                <p>A sanctuary carved from the earth, dedicated to your balance, harmony, and ultimate renewal.</p>
+            </div>
+            <div class="footer-grid">
+                <div class="footer-col reveal-up" style="transition-delay: 0.1s;">
+                    <h4>Contact Details</h4>
+                    <p>+27 (0)12 345 6789</p>
+                    <p>hello@lumiere.co.za</p>
+                    <p>123 Sanctuary Blvd<br>Wellness City, 0001</p>
+                </div>
+                <div class="footer-col reveal-up" style="transition-delay: 0.2s;">
+                    <h4>Working Hours</h4>
+                    <p>Monday - Friday: 08:00 - 19:00</p>
+                    <p>Saturday: 09:00 - 17:00</p>
+                    <p>Sunday: Closed</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom reveal-up" style="transition-delay: 0.3s;">
+            <div class="footer-legal">
+                <a href="#">Terms & Conditions</a>
+                <span class="divider">|</span>
+                <a href="#">Privacy Policy</a>
+            </div>
+            <p class="powered-by">Powered by MediLoop Websites</p>
         </div>
     </footer>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Scroll Reveal
+            const revealElements = document.querySelectorAll('.reveal-up');
+            const revealOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
+            const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, revealOptions);
+            revealElements.forEach(el => {
+                revealOnScroll.observe(el);
+                if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('active');
+            });
+
+            // Sidebar Menu
+            const menuToggle = document.getElementById('menuToggle');
+            const closeMenu = document.getElementById('closeMenu');
+            const glassSidebar = document.getElementById('glassSidebar');
+            if(menuToggle && closeMenu && glassSidebar) {
+                menuToggle.addEventListener('click', () => glassSidebar.classList.add('active'));
+                closeMenu.addEventListener('click', () => glassSidebar.classList.remove('active'));
+            }
+
+            // Newsletter
+            const newsletterForm = document.getElementById('newsletterForm');
+            const formMessage = document.getElementById('formMessage');
+            if(newsletterForm) {
+                newsletterForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const email = document.getElementById('emailInput').value;
+                    const subscribeBtn = document.getElementById('subscribeBtn');
+                    
+                    subscribeBtn.textContent = 'Subscribing...';
+                    subscribeBtn.disabled = true;
+
+                    const SUPABASE_ANON_KEY = 'YOUR_ANON_KEY_HERE'; 
+                    const SUPABASE_URL = 'https://vafzjdqepmuunwqhzunz.supabase.co/rest/v1/mailing_list';
+
+                    try {
+                        const response = await fetch(SUPABASE_URL, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'apikey': SUPABASE_ANON_KEY,
+                                'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                                'Prefer': 'return=minimal'
+                            },
+                            body: JSON.stringify({ email_address: email })
+                        });
+
+                        if (response.ok) {
+                            formMessage.textContent = 'Thank you! You have been successfully subscribed.';
+                            formMessage.style.color = 'var(--text-dark)';
+                            newsletterForm.reset();
+                        } else { throw new Error('Network error.'); }
+                    } catch (error) {
+                        formMessage.textContent = 'Oops! Something went wrong. Please try again.';
+                        formMessage.style.color = '#B35C3B'; 
+                    } finally {
+                        subscribeBtn.textContent = 'Subscribe';
+                        subscribeBtn.disabled = false;
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
