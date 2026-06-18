@@ -46,13 +46,13 @@ h1, h2, h3 {
 .hero {
     position: relative;
     height: 100vh;
-    /* Removed the heavy cream overlay! Back to the crisp original image */
-    background: linear-gradient(rgba(58, 53, 50, 0.1), rgba(58, 53, 50, 0.1)), url('https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Screenshot_20260618_082846_Canva.jpg') center/cover no-repeat;
+    /* FIXED: Using the correct 'Second Pink Image' link! */
+    background: url('https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Second%20Pink%20Image.jpg') center/cover no-repeat;
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* Aligns content to the left */
+    justify-content: flex-start; 
     text-align: left;
-    padding-left: 10%; /* Creates breathing room from the edge */
+    padding-left: 10%; 
 }
 
 /* The Logo Bar */
@@ -63,7 +63,7 @@ h1, h2, h3 {
     display: flex;
     align-items: center;
     gap: 12px;
-    color: #FFFFFF; /* Switched to white to pop over the image */
+    color: var(--text-dark); /* Switched back to elegant dark text */
 }
 
 .logo-icon {
@@ -78,30 +78,30 @@ h1, h2, h3 {
 }
 
 .hero-content {
-    max-width: 550px; /* Prevents text from stretching across the screen */
+    max-width: 550px; 
 }
 
 .hero-content h1 {
     font-size: clamp(3.5rem, 6vw, 5.5rem);
-    color: #FFFFFF;
+    color: var(--text-dark);
     margin-bottom: 20px;
     line-height: 1.1;
-    letter-spacing: -1px; /* Tighter tracking mimics luxury editorial print */
+    letter-spacing: -1px; 
 }
 
 /* The elegant dividing line */
 .hero-divider {
     border: 0;
     height: 1px;
-    background-color: #FFFFFF;
+    background-color: var(--text-dark);
     width: 100%;
     margin-bottom: 25px;
-    opacity: 0.5;
+    opacity: 0.3;
 }
 
 .hero-subtext {
     font-size: 1.1rem;
-    color: #FFFFFF;
+    color: var(--text-dark);
     margin-bottom: 40px;
     line-height: 1.6;
 }
@@ -110,8 +110,8 @@ h1, h2, h3 {
 .btn-outline {
     display: inline-block;
     padding: 14px 40px;
-    border: 1px solid #FFFFFF;
-    color: #FFFFFF;
+    border: 1px solid var(--text-dark);
+    color: var(--text-dark);
     text-decoration: none;
     font-size: 1rem;
     border-radius: 50px; 
@@ -119,8 +119,8 @@ h1, h2, h3 {
 }
 
 .btn-outline:hover {
-    background: #FFFFFF;
-    color: var(--text-dark);
+    background: var(--text-dark);
+    color: #FFFFFF;
 }
 
 /* =========================================
