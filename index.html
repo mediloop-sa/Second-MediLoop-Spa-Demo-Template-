@@ -21,9 +21,8 @@
                 <h2>Our Philosophy</h2>
                 <p>Established in 2015, our sanctuary is dedicated to giving our clients quality and luxury services to ensure their utmost relaxation and pampering to achieve balance, harmony and renewal.</p>
             </div>
-            <div class="philosophy-images">
-                <img src="https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Theme%20Image%201.png" alt="Spa Detail" class="img-top parallax-top">
-                <img src="https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Social%20Media%204.png" alt="Spa Ritual" class="img-bottom parallax-bottom">
+            <div class="philosophy-action reveal-up">
+                <a href="#book" class="btn-pill">Book Now</a>
             </div>
         </div>
     </section>
@@ -106,13 +105,11 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            
-            // 1. CINEMATIC SCROLL REVEAL (Intersection Observer)
-            // This watches the screen and triggers the fade-up when elements appear
+            // CINEMATIC SCROLL REVEAL (Intersection Observer)
             const revealElements = document.querySelectorAll('.reveal-up');
             
             const revealOptions = {
-                threshold: 0.15, // Triggers when 15% of the element is visible
+                threshold: 0.15,
                 rootMargin: "0px 0px -50px 0px"
             };
 
@@ -120,37 +117,17 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('active');
-                        observer.unobserve(entry.target); // Only animates once so it isn't distracting
+                        observer.unobserve(entry.target); 
                     }
                 });
             }, revealOptions);
 
             revealElements.forEach(el => {
                 revealOnScroll.observe(el);
-                // Also trigger immediately if they are already in viewport on load (like the hero text)
                 if (el.getBoundingClientRect().top < window.innerHeight) {
                     el.classList.add('active');
                 }
             });
-
-            // 2. PARALLAX FLOATING IMAGES (Philosophy Section)
-            // This reads the scroll position and slightly moves the images in opposite directions
-            const imgTop = document.querySelector('.parallax-top');
-            const imgBottom = document.querySelector('.parallax-bottom');
-
-            window.addEventListener('scroll', () => {
-                let scrollY = window.scrollY;
-                
-                if(imgTop) {
-                    // Moves slightly upward
-                    imgTop.style.transform = `translateY(${scrollY * -0.05}px)`; 
-                }
-                if(imgBottom) {
-                    // Moves slightly downward
-                    imgBottom.style.transform = `translateY(${scrollY * 0.05}px)`; 
-                }
-            });
-
         });
     </script>
 </body>
