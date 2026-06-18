@@ -10,43 +10,43 @@
 
     <header class="hero">
         <div class="hero-content">
-            <h1>Pamper and<br>indulge yourself</h1>
-            <a href="#book" class="btn-outline">Book an Appointment</a>
+            <h1 class="reveal-up">Pamper and<br>indulge yourself</h1>
+            <a href="#book" class="btn-outline reveal-up" style="transition-delay: 0.2s;">Book an Appointment</a>
         </div>
     </header>
 
     <section class="philosophy">
         <div class="container philosophy-grid">
-            <div class="philosophy-text">
+            <div class="philosophy-text reveal-up">
                 <h2>Our Philosophy</h2>
                 <p>Established in 2015, our sanctuary is dedicated to giving our clients quality and luxury services to ensure their utmost relaxation and pampering to achieve balance, harmony and renewal.</p>
             </div>
             <div class="philosophy-images">
-                <img src="https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Theme%20Image%201.png" alt="Spa Detail" class="img-top">
-                <img src="https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Social%20Media%204.png" alt="Spa Ritual" class="img-bottom">
+                <img src="https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Theme%20Image%201.png" alt="Spa Detail" class="img-top parallax-top">
+                <img src="https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Social%20Media%204.png" alt="Spa Ritual" class="img-bottom parallax-bottom">
             </div>
         </div>
     </section>
 
     <section class="packages">
         <div class="container text-center">
-            <h2>Our Packages</h2>
-            <p class="subtitle">We have a variety of services to ensure your wellness.</p>
+            <h2 class="reveal-up">Our Packages</h2>
+            <p class="subtitle reveal-up">We have a variety of services to ensure your wellness.</p>
 
             <div class="grid-3">
-                <div class="grid-item">
+                <div class="grid-item reveal-up">
                     <div class="image-wrapper">
                         <img src="https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Theme%20Image%20Website%202.jpg" alt="Facials" class="square-img">
                     </div>
                     <h3>Facials</h3>
                 </div>
-                <div class="grid-item">
+                <div class="grid-item reveal-up">
                     <div class="image-wrapper">
                         <img src="https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Theme%20Image%201.png" alt="Massage" class="square-img">
                     </div>
                     <h3>Massage</h3>
                 </div>
-                <div class="grid-item">
+                <div class="grid-item reveal-up">
                     <div class="image-wrapper">
                         <img src="https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Social%20Media%204.png" alt="Treatments" class="square-img">
                     </div>
@@ -58,20 +58,20 @@
 
     <section class="facilities">
         <div class="container text-center">
-            <h2>Our Facilities</h2>
+            <h2 class="reveal-up">Our Facilities</h2>
 
             <div class="grid-3">
-                <div class="grid-item">
+                <div class="grid-item reveal-up">
                     <img src="https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Theme%20Image%20Website%202.jpg" alt="Suites" class="circle-img">
                     <h3>Suites & Treatment Rooms</h3>
                     <p>More than 10 relaxing treatment rooms to rest, renew and recover.</p>
                 </div>
-                <div class="grid-item">
+                <div class="grid-item reveal-up">
                     <img src="https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Spa%20image%203.png" alt="Equipment" class="circle-img">
                     <h3>World-class Equipment</h3>
                     <p>Wide array of top-tier amenities and equipment for holistic wellness.</p>
                 </div>
-                <div class="grid-item">
+                <div class="grid-item reveal-up">
                     <img src="https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Theme%20Image%201.png" alt="Sauna" class="circle-img">
                     <h3>Sauna & Steam Rooms</h3>
                     <p>Rejuvenate your form in a relaxing environment after each session.</p>
@@ -81,7 +81,7 @@
     </section>
 
     <footer id="book" class="split-footer">
-        <div class="footer-left">
+        <div class="footer-left reveal-up">
             <h2>Book an<br>Appointment</h2>
 
             <div class="contact-block">
@@ -104,5 +104,54 @@
         </div>
     </footer>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            // 1. CINEMATIC SCROLL REVEAL (Intersection Observer)
+            // This watches the screen and triggers the fade-up when elements appear
+            const revealElements = document.querySelectorAll('.reveal-up');
+            
+            const revealOptions = {
+                threshold: 0.15, // Triggers when 15% of the element is visible
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target); // Only animates once so it isn't distracting
+                    }
+                });
+            }, revealOptions);
+
+            revealElements.forEach(el => {
+                revealOnScroll.observe(el);
+                // Also trigger immediately if they are already in viewport on load (like the hero text)
+                if (el.getBoundingClientRect().top < window.innerHeight) {
+                    el.classList.add('active');
+                }
+            });
+
+            // 2. PARALLAX FLOATING IMAGES (Philosophy Section)
+            // This reads the scroll position and slightly moves the images in opposite directions
+            const imgTop = document.querySelector('.parallax-top');
+            const imgBottom = document.querySelector('.parallax-bottom');
+
+            window.addEventListener('scroll', () => {
+                let scrollY = window.scrollY;
+                
+                if(imgTop) {
+                    // Moves slightly upward
+                    imgTop.style.transform = `translateY(${scrollY * -0.05}px)`; 
+                }
+                if(imgBottom) {
+                    // Moves slightly downward
+                    imgBottom.style.transform = `translateY(${scrollY * 0.05}px)`; 
+                }
+            });
+
+        });
+    </script>
 </body>
 </html>
