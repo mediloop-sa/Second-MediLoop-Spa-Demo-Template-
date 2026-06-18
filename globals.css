@@ -41,45 +41,90 @@ h1, h2, h3 {
 }
 
 /* =========================================
-   HERO SECTION (CORRECTED IMAGE)
+   HERO SECTION (LEFT-ALIGNED EDITORIAL)
    ========================================= */
 .hero {
+    position: relative;
     height: 100vh;
-    /* Updated with the new, working Supabase image link */
-    background: linear-gradient(rgba(58, 53, 50, 0.1), rgba(58, 53, 50, 0.1)), url('https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Second%20Pink%20Image.jpg') center/cover no-repeat;
+    /* Softened the overlay so the dark text pops beautifully */
+    background: linear-gradient(rgba(250, 246, 242, 0.4), rgba(250, 246, 242, 0.4)), url('https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Screenshot_20260618_082846_Canva.jpg') center/cover no-repeat;
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
+    justify-content: flex-start; /* Aligns content to the left */
+    text-align: left;
+    padding-left: 10%; /* Creates breathing room from the edge */
+}
+
+/* The Logo Bar */
+.hero-nav {
+    position: absolute;
+    top: 50px;
+    left: 10%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-dark);
+}
+
+.logo-icon {
+    font-size: 1.5rem;
+}
+
+.logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.hero-content {
+    max-width: 550px; /* Prevents text from stretching across the screen */
 }
 
 .hero-content h1 {
-    font-size: clamp(3rem, 6vw, 5rem);
-    color: #FFFFFF;
-    margin-bottom: 40px;
-    line-height: 1.2;
-    letter-spacing: 2px;
+    font-size: clamp(3.5rem, 6vw, 5.5rem);
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    line-height: 1.1;
+    letter-spacing: -1px; /* Tighter tracking mimics luxury editorial print */
 }
 
+/* The elegant dividing line from the screenshot */
+.hero-divider {
+    border: 0;
+    height: 1px;
+    background-color: var(--text-dark);
+    width: 100%;
+    margin-bottom: 25px;
+    opacity: 0.3;
+}
+
+.hero-subtext {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+/* The Outline Pill Button */
 .btn-outline {
     display: inline-block;
-    padding: 15px 40px;
-    border: 1px solid #FFFFFF;
-    color: #FFFFFF;
+    padding: 14px 40px;
+    border: 1px solid var(--text-dark);
+    color: var(--text-dark);
     text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 0.85rem;
+    font-size: 1rem;
+    border-radius: 50px; 
     transition: all 0.3s ease;
 }
 
 .btn-outline:hover {
-    background: #FFFFFF;
-    color: var(--text-dark);
+    background: var(--text-dark);
+    color: #FFFFFF;
 }
 
 /* =========================================
-   PHILOSOPHY SECTION
+   PHILOSOPHY SECTION 
    ========================================= */
 .philosophy {
     background-color: var(--bg-canvas);
@@ -92,43 +137,51 @@ h1, h2, h3 {
     align-items: center;
 }
 
+.philosophy-text {
+    text-align: center;
+    padding: 0 20px;
+}
+
 .philosophy-text h2 {
     font-size: 2.5rem;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .philosophy-text p {
     color: var(--text-muted);
 }
 
-.philosophy-images {
-    position: relative;
-    height: 500px;
+.philosophy-action {
+    display: flex;
+    justify-content: center;
 }
 
-.img-top {
-    position: absolute;
-    top: 0; right: 0;
-    width: 60%;
-    height: 300px;
-    object-fit: cover;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+/* The Solid Pill Button */
+.btn-pill {
+    display: inline-block;
+    padding: 18px 50px;
+    background-color: var(--text-dark);
+    color: #FFFFFF;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.9rem;
+    border-radius: 50px;
+    box-shadow: 0 10px 20px rgba(58, 53, 50, 0.15);
+    transition: all 0.3s ease;
 }
 
-.img-bottom {
-    position: absolute;
-    bottom: 0; left: 0;
-    width: 60%;
-    height: 300px;
-    object-fit: cover;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+.btn-pill:hover {
+    background-color: var(--text-muted);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px rgba(58, 53, 50, 0.2);
 }
 
 /* =========================================
    PACKAGES & FACILITIES (GRIDS)
    ========================================= */
 .packages {
-    background-color: #FFFFFF; /* Crisp white break */
+    background-color: #FFFFFF;
 }
 
 .facilities {
@@ -164,14 +217,13 @@ h1, h2, h3 {
 }
 
 /* =========================================
-   INTERACTIVE IMAGE SHAPES (HOVER MAGIC)
+   INTERACTIVE IMAGE SHAPES
    ========================================= */
-
-/* The protective box that keeps the zoom contained */
 .image-wrapper {
     position: relative;
     overflow: hidden; 
     cursor: pointer;
+    border-radius: 20px; 
 }
 
 .square-img {
@@ -179,16 +231,14 @@ h1, h2, h3 {
     aspect-ratio: 1 / 1;
     object-fit: cover;
     display: block;
-    /* The super slow, expensive-feeling zoom transition */
     transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); 
 }
 
-/* The chic frosted overlay that hides until you hover */
 .image-wrapper::after {
     content: 'View Ritual';
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(247, 234, 232, 0.85); /* Tinted with your blush pink */
+    background: rgba(247, 234, 232, 0.85); 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -200,7 +250,6 @@ h1, h2, h3 {
     transition: opacity 0.5s ease;
 }
 
-/* What happens when a mouse hovers OR a finger taps the image */
 .image-wrapper:hover .square-img,
 .image-wrapper:active .square-img {
     transform: scale(1.08); 
@@ -211,7 +260,6 @@ h1, h2, h3 {
     opacity: 1; 
 }
 
-/* Keeping the circle images static for now */
 .circle-img {
     width: 100%;
     aspect-ratio: 1 / 1;
@@ -269,85 +317,64 @@ h1, h2, h3 {
 }
 
 /* =========================================
-   CINEMATIC SCROLL REVEALS & PARALLAX
+   CINEMATIC SCROLL REVEALS
    ========================================= */
-
-/* The hidden state before the element scrolls into view */
 .reveal-up {
     opacity: 0;
-    transform: translateY(40px); /* Pushed down slightly */
+    transform: translateY(40px); 
     transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* The active state when JavaScript detects it on screen */
 .reveal-up.active {
     opacity: 1;
-    transform: translateY(0); /* Glides back to its original position */
+    transform: translateY(0); 
 }
 
-/* Staggering the grid items so they fade in one by one (1, 2, 3) */
 .grid-item:nth-child(1).reveal-up { transition-delay: 0.1s; }
 .grid-item:nth-child(2).reveal-up { transition-delay: 0.25s; }
 .grid-item:nth-child(3).reveal-up { transition-delay: 0.4s; }
 
-/* Ensuring the parallax images move smoothly */
-.philosophy-images img {
-    will-change: transform; /* Tells the browser to optimize this for animation */
-}
-
 /* =========================================
-   MOBILE RESPONSIVENESS (PERFECTED)
+   MOBILE RESPONSIVENESS
    ========================================= */
 @media (max-width: 768px) {
-    /* Stack all our grids into a single column */
     .philosophy-grid, .grid-3, .split-footer {
         grid-template-columns: 1fr;
     }
 
-    /* Reduce global padding so there isn't massive dead space on phones */
     .container {
         padding: 60px 20px;
     }
+    
+    /* Left-align mobile fixes */
+    .hero {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    
+    .hero-nav {
+        left: 5%;
+        top: 30px;
+    }
 
-    /* Shrink the massive hero text to fit nicely */
     .hero-content h1 {
-        font-size: 2.8rem;
-        margin-bottom: 30px;
+        font-size: 3.2rem;
+        margin-bottom: 15px;
     }
 
-    /* Give the parallax images enough vertical room to float without colliding */
-    .philosophy-images {
-        height: 550px;
-        margin-top: 30px;
+    .philosophy-action {
+        margin-top: 20px;
     }
 
-    .img-top, .img-bottom {
-        width: 80%;
-        height: 250px;
-    }
-
-    .img-top { 
-        left: 10%; 
-        right: auto; 
-        top: 0;
-    }
-
-    .img-bottom { 
-        left: 10%; 
-        bottom: 0;
-    }
-
-    /* Center the booking footer for a cleaner mobile layout */
     .footer-left {
         padding: 60px 20px;
         text-align: center;
     }
 
     .footer-right img {
-        height: 350px; /* Slightly shorter so it doesn't dominate the screen */
+        height: 350px; 
     }
 
-    /* Shorten the scroll-reveal distance so it feels smooth, not jarring */
     .reveal-up {
         transform: translateY(20px);
     }
