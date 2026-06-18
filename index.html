@@ -133,7 +133,8 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            // CINEMATIC SCROLL REVEAL (Intersection Observer)
+            
+            // 1. CINEMATIC SCROLL REVEAL (Intersection Observer)
             const revealElements = document.querySelectorAll('.reveal-up');
             
             const revealOptions = {
@@ -156,6 +157,21 @@
                     el.classList.add('active');
                 }
             });
+
+            // 2. GLASSMORPHIC SIDEBAR TOGGLE
+            const menuToggle = document.getElementById('menuToggle');
+            const closeMenu = document.getElementById('closeMenu');
+            const glassSidebar = document.getElementById('glassSidebar');
+
+            if(menuToggle && closeMenu && glassSidebar) {
+                menuToggle.addEventListener('click', () => {
+                    glassSidebar.classList.add('active');
+                });
+
+                closeMenu.addEventListener('click', () => {
+                    glassSidebar.classList.remove('active');
+                });
+            }
         });
     </script>
 </body>
