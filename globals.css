@@ -326,6 +326,121 @@ h1, h2, h3 {
 }
 
 /* =========================================
+   PRESS & GALLERY PAGE
+   ========================================= */
+.gallery-section {
+    padding-bottom: 100px;
+}
+
+/* CSS Grid Masonry/Editorial Layout */
+.editorial-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 250px;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.gal-img {
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(58, 53, 50, 0.1);
+    transition: transform 0.4s ease;
+}
+
+.gal-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s ease;
+}
+
+.gal-img:hover {
+    transform: translateY(-5px);
+}
+
+.gal-img:hover img {
+    transform: scale(1.05);
+}
+
+/* The Grid Span Classes to make it asymmetrical */
+.feat-large {
+    grid-column: span 2;
+    grid-row: span 2; /* Huge Square */
+}
+.feat-tall {
+    grid-row: span 2; /* Tall Portrait */
+}
+.feat-wide {
+    grid-column: span 2; /* Wide Landscape */
+}
+
+/* Parallax Reviews Section */
+.press-parallax {
+    position: relative;
+    background: linear-gradient(rgba(58, 53, 50, 0.5), rgba(58, 53, 50, 0.5)), url('https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Theme%20Image%201.png') center/cover no-repeat;
+    background-attachment: fixed; /* Creates the beautiful parallax float */
+    padding: 100px 0;
+}
+
+.review-card {
+    width: 400px; 
+    flex: 0 0 400px; 
+    scroll-snap-align: center;
+    background: rgba(250, 246, 242, 0.2); 
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 50px 40px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.stars {
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    letter-spacing: 5px;
+    margin-bottom: 20px;
+}
+
+.quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: #FFFFFF;
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.review-line {
+    border: 0;
+    height: 1px;
+    background-color: #FFFFFF;
+    width: 40px;
+    margin: 0 auto 20px auto;
+    opacity: 0.5;
+}
+
+.review-card h4 {
+    font-size: 1rem;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.verified {
+    display: block;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 5px;
+}
+
+/* =========================================
    REWARDS PAGE - VIP SPOTLIGHT & TIERS
    ========================================= */
 .spotlight-section {
@@ -349,7 +464,6 @@ h1, h2, h3 {
     box-shadow: 0 20px 40px rgba(58, 53, 50, 0.1);
 }
 
-/* Glass card floating on the LEFT side this time */
 .spotlight-glass {
     position: absolute;
     left: 50%; 
@@ -396,7 +510,6 @@ h1, h2, h3 {
     font-weight: 500;
 }
 
-/* The Luxury Tiers */
 .tiers-section {
     padding: 80px 20px 120px 20px;
     background-color: #FFFFFF;
@@ -450,7 +563,7 @@ h1, h2, h3 {
 .tier-benefits {
     list-style: none;
     text-align: left;
-    margin-top: auto; /* Pushes list to bottom nicely */
+    margin-top: auto; 
 }
 
 .tier-benefits li {
@@ -1092,6 +1205,26 @@ h1, h2, h3 {
 
     .zz-text { padding: 0; }
 
+    /* Press & Gallery Page */
+    .editorial-gallery {
+        grid-template-columns: 1fr 1fr; /* 2 columns on mobile */
+        grid-auto-rows: 150px;
+        gap: 10px;
+    }
+    
+    /* Re-adjust spans for smaller screen */
+    .feat-large { grid-column: span 2; grid-row: span 2; }
+    .feat-tall { grid-row: span 2; }
+    .feat-wide { grid-column: span 2; }
+
+    .review-card {
+        width: 300px;
+        flex: 0 0 300px;
+        padding: 40px 25px;
+    }
+
+    .quote { font-size: 1.05rem; }
+
     /* Rewards / VIP Spotlight */
     .spotlight-wrapper {
         flex-direction: column;
@@ -1106,7 +1239,7 @@ h1, h2, h3 {
         position: relative;
         left: 0;
         width: 90%;
-        margin-top: -60px; /* Overlaps the bottom of the image on mobile */
+        margin-top: -60px; 
         padding: 40px 20px;
         text-align: center;
     }
