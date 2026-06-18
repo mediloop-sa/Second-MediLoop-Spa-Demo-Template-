@@ -269,6 +269,33 @@ h1, h2, h3 {
 }
 
 /* =========================================
+   CINEMATIC SCROLL REVEALS & PARALLAX
+   ========================================= */
+
+/* The hidden state before the element scrolls into view */
+.reveal-up {
+    opacity: 0;
+    transform: translateY(40px); /* Pushed down slightly */
+    transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* The active state when JavaScript detects it on screen */
+.reveal-up.active {
+    opacity: 1;
+    transform: translateY(0); /* Glides back to its original position */
+}
+
+/* Staggering the grid items so they fade in one by one (1, 2, 3) */
+.grid-item:nth-child(1).reveal-up { transition-delay: 0.1s; }
+.grid-item:nth-child(2).reveal-up { transition-delay: 0.25s; }
+.grid-item:nth-child(3).reveal-up { transition-delay: 0.4s; }
+
+/* Ensuring the parallax images move smoothly */
+.philosophy-images img {
+    will-change: transform; /* Tells the browser to optimize this for animation */
+}
+
+/* =========================================
    MOBILE RESPONSIVENESS
    ========================================= */
 @media (max-width: 768px) {
