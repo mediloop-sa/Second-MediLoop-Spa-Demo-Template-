@@ -41,11 +41,12 @@ h1, h2, h3 {
 }
 
 /* =========================================
-   HERO SECTION (EXPANDED IMAGE)
+   HERO SECTION (CORRECTED IMAGE)
    ========================================= */
 .hero {
     height: 100vh;
-    background: linear-gradient(rgba(58, 53, 50, 0.1), rgba(58, 53, 50, 0.1)), url('https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Screenshot_20260618_082846_Canva.jpg') center/cover no-repeat;
+    /* Updated with the new, working Supabase image link */
+    background: linear-gradient(rgba(58, 53, 50, 0.1), rgba(58, 53, 50, 0.1)), url('https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Second%20Pink%20Image.jpg') center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
