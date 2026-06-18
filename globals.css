@@ -148,6 +148,7 @@ h1, h2, h3 {
 .nav-links a:hover::after { width: 100%; }
 .sidebar-footer { margin-top: auto; }
 
+
 /* =========================================
    HERO SECTION (INDEX & SUBPAGES)
    ========================================= */
@@ -322,6 +323,148 @@ h1, h2, h3 {
     border-bottom: 1px solid var(--text-muted);
     display: inline-block;
     padding-bottom: 5px;
+}
+
+/* =========================================
+   REWARDS PAGE - VIP SPOTLIGHT & TIERS
+   ========================================= */
+.spotlight-section {
+    padding: 60px 20px 100px 20px;
+    background-color: var(--bg-canvas);
+}
+
+.spotlight-wrapper {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.spotlight-img {
+    width: 65%;
+    border-radius: 20px;
+    object-fit: cover;
+    aspect-ratio: 16 / 9;
+    box-shadow: 0 20px 40px rgba(58, 53, 50, 0.1);
+}
+
+/* Glass card floating on the LEFT side this time */
+.spotlight-glass {
+    position: absolute;
+    left: 50%; 
+    width: 50%;
+    background: rgba(250, 246, 242, 0.75); 
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    padding: 50px 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: -10px 20px 50px rgba(58, 53, 50, 0.1);
+}
+
+.spotlight-glass h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.spotlight-glass p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.spotlight-price {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.new-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+/* The Luxury Tiers */
+.tiers-section {
+    padding: 80px 20px 120px 20px;
+    background-color: #FFFFFF;
+}
+
+.tier-card {
+    background-color: var(--blush-pink);
+    padding: 50px 30px;
+    border-radius: 20px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.tier-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(58, 53, 50, 0.08);
+}
+
+.tier-card.highlight {
+    background-color: var(--text-dark);
+    color: #FFFFFF;
+}
+
+.tier-card.highlight h3, .tier-card.highlight .tier-req {
+    color: #FFFFFF;
+}
+
+.tier-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.tier-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.tier-req {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(58, 53, 50, 0.1);
+    padding-bottom: 10px;
+}
+
+.tier-benefits {
+    list-style: none;
+    text-align: left;
+    margin-top: auto; /* Pushes list to bottom nicely */
+}
+
+.tier-benefits li {
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    position: relative;
+    padding-left: 25px;
+}
+
+.tier-benefits li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    font-family: sans-serif;
 }
 
 /* =========================================
@@ -948,6 +1091,30 @@ h1, h2, h3 {
     }
 
     .zz-text { padding: 0; }
+
+    /* Rewards / VIP Spotlight */
+    .spotlight-wrapper {
+        flex-direction: column;
+    }
+
+    .spotlight-img {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+    }
+
+    .spotlight-glass {
+        position: relative;
+        left: 0;
+        width: 90%;
+        margin-top: -60px; /* Overlaps the bottom of the image on mobile */
+        padding: 40px 20px;
+        text-align: center;
+    }
+
+    .spotlight-price {
+        flex-direction: column;
+        gap: 5px;
+    }
 
     /* Treatments / Packages */
     .philosophy-action { margin-top: 20px; }
