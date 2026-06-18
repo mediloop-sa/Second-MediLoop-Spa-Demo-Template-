@@ -209,41 +209,33 @@
             const closeDossier = document.getElementById('closeDossier');
             const packageCards = document.querySelectorAll('.package-card');
             
-            // When a package is clicked...
             packageCards.forEach(card => {
                 card.addEventListener('click', () => {
-                    // Update Text
                     document.getElementById('modalTitle').textContent = card.dataset.title;
                     document.getElementById('modalTime').textContent = card.dataset.time;
                     document.getElementById('modalPrice').textContent = card.dataset.price;
                     
-                    // Build the staggered list
                     const list = document.getElementById('modalList');
-                    list.innerHTML = ''; // Clear old items
-                    const items = card.dataset.items.split('|'); // Splits the text at the '|' symbol
+                    list.innerHTML = ''; 
+                    const items = card.dataset.items.split('|'); 
                     
                     items.forEach((item, index) => {
                         const li = document.createElement('li');
                         li.textContent = item;
                         li.className = 'dossier-item';
-                        // Calculates staggered delay so they pop up one after the other
                         li.style.transitionDelay = `${0.2 + (index * 0.15)}s`; 
                         list.appendChild(li);
                     });
 
-                    // Open Modal
                     modal.classList.add('active');
                     
-                    // Trigger the animation for the newly created list items
                     setTimeout(() => {
                         document.querySelectorAll('.dossier-item').forEach(li => li.classList.add('show'));
                     }, 50);
                 });
             });
 
-            // Close modal functions
             if(closeDossier) closeDossier.addEventListener('click', () => modal.classList.remove('active'));
-            // Close if clicking the background
             window.addEventListener('click', (e) => {
                 if (e.target === modal) modal.classList.remove('active');
             });
