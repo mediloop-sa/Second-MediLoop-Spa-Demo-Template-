@@ -23,7 +23,7 @@
             <li><a href="press.html">Press</a></li>
         </ul>
         <div class="sidebar-footer">
-            <a href="#book" class="btn-pill" style="padding: 12px 30px; font-size: 0.8rem;">Book Now</a>
+            <button class="btn-pill open-booking" style="padding: 12px 30px; font-size: 0.8rem; width: 100%;">Book Now</button>
         </div>
     </nav>
 
@@ -62,7 +62,7 @@
                         <span class="old-price">Value R 1,850</span>
                         <span class="new-price">Yours for R 1,200</span>
                     </div>
-                    <a href="#book" class="btn-pill">Claim Offer</a>
+                    <button class="btn-pill open-booking">Claim Offer</button>
                 </div>
             </div>
         </div>
@@ -114,7 +114,6 @@
         <div class="container text-center">
             <h2>Join Our Mailing List</h2>
             <p class="subtitle">Subscribe to receive exclusive offers, wellness tips, and spa news.</p>
-            
             <form id="newsletterForm" class="newsletter-form">
                 <input type="email" id="emailInput" placeholder="Enter your email address" required>
                 <button type="submit" class="btn-pill" id="subscribeBtn">Subscribe</button>
@@ -146,17 +145,33 @@
         </div>
         <div class="footer-bottom reveal-up" style="transition-delay: 0.3s;">
             <div class="footer-legal">
-                <a href="#">Terms & Conditions</a>
+                <a href="terms.html">Terms & Conditions</a>
                 <span class="divider">|</span>
-                <a href="#">Privacy Policy</a>
+                <a href="privacy.html">Privacy Policy</a>
             </div>
             <p class="powered-by">Powered by MediLoop Websites</p>
         </div>
     </footer>
 
+    <div class="booking-modal" id="bookingModal">
+        <div class="booking-content">
+            <button class="close-booking" id="closeBooking">&times;</button>
+            <h2>Book Your Visit</h2>
+            <p>How would you like to schedule your sanctuary experience?</p>
+            <div class="booking-options">
+                <a href="https://wa.me/27123456789" target="_blank" class="btn-whatsapp">Book via WhatsApp</a>
+                <a href="https://www.fresha.com/" target="_blank" class="btn-fresha">Book via Portal</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="cookie-banner" id="cookieBanner">
+        <span>We use cookies to ensure you get the best experience on our website.</span>
+        <button class="btn-cookie" id="acceptCookiesBtn">Got it</button>
+    </div>
+
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            // Scroll Reveal
             const revealElements = document.querySelectorAll('.reveal-up');
             const revealOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
             const revealOnScroll = new IntersectionObserver(function(entries, observer) {
@@ -172,7 +187,6 @@
                 if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('active');
             });
 
-            // Sidebar Menu
             const menuToggle = document.getElementById('menuToggle');
             const closeMenu = document.getElementById('closeMenu');
             const glassSidebar = document.getElementById('glassSidebar');
@@ -181,7 +195,6 @@
                 closeMenu.addEventListener('click', () => glassSidebar.classList.remove('active'));
             }
 
-            // Newsletter
             const newsletterForm = document.getElementById('newsletterForm');
             const formMessage = document.getElementById('formMessage');
             if(newsletterForm) {
@@ -189,7 +202,6 @@
                     e.preventDefault();
                     const email = document.getElementById('emailInput').value;
                     const subscribeBtn = document.getElementById('subscribeBtn');
-                    
                     subscribeBtn.textContent = 'Subscribing...';
                     subscribeBtn.disabled = true;
 
@@ -207,7 +219,6 @@
                             },
                             body: JSON.stringify({ email_address: email })
                         });
-
                         if (response.ok) {
                             formMessage.textContent = 'Thank you! You have been successfully subscribed.';
                             formMessage.style.color = 'var(--text-dark)';
@@ -222,6 +233,37 @@
                     }
                 });
             }
+
+            const cookieBanner = document.getElementById('cookieBanner');
+            const acceptCookiesBtn = document.getElementById('acceptCookiesBtn');
+            if (cookieBanner && acceptCookiesBtn) {
+                if (localStorage.getItem('cookiesAccepted') === 'true') {
+                    cookieBanner.style.display = 'none';
+                }
+                acceptCookiesBtn.addEventListener('click', () => {
+                    cookieBanner.style.display = 'none';
+                    localStorage.setItem('cookiesAccepted', 'true');
+                });
+            }
+
+            const bookingModal = document.getElementById('bookingModal');
+            const closeBooking = document.getElementById('closeBooking');
+            const openBookingBtns = document.querySelectorAll('.open-booking');
+            openBookingBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (glassSidebar && glassSidebar.classList.contains('active')) {
+                        glassSidebar.classList.remove('active');
+                    }
+                    bookingModal.classList.add('active');
+                });
+            });
+            if (closeBooking) {
+                closeBooking.addEventListener('click', () => bookingModal.classList.remove('active'));
+            }
+            window.addEventListener('click', (e) => {
+                if (e.target === bookingModal) bookingModal.classList.remove('active');
+            });
         });
     </script>
 </body>
