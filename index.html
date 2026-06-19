@@ -15,7 +15,6 @@
 
     <nav class="glass-sidebar" id="glassSidebar">
         <button class="close-menu" id="closeMenu" aria-label="Close Menu">&times;</button>
-        
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
@@ -23,9 +22,8 @@
             <li><a href="rewards.html">Rewards</a></li>
             <li><a href="press.html">Press</a></li>
         </ul>
-        
         <div class="sidebar-footer">
-            <a href="#book" class="btn-pill" style="padding: 12px 30px; font-size: 0.8rem;">Book Now</a>
+            <button class="btn-pill open-booking" style="padding: 12px 30px; font-size: 0.8rem; width: 100%;">Book Now</button>
         </div>
     </nav>
 
@@ -39,7 +37,7 @@
             <h1 class="reveal-up">Find your<br>natural balance</h1>
             <hr class="hero-divider reveal-up" style="transition-delay: 0.1s;">
             <p class="hero-subtext reveal-up" style="transition-delay: 0.2s;">Nature inspired treatments with modern techniques and a considered approach.</p>
-            <a href="#book" class="btn-outline reveal-up" style="transition-delay: 0.3s;">Book now</a>
+            <button class="btn-outline open-booking reveal-up" style="transition-delay: 0.3s;">Book now</button>
         </div>
     </header>
 
@@ -50,7 +48,7 @@
                 <p>Established in 2015, our sanctuary is dedicated to giving our clients quality and luxury services to ensure their utmost relaxation and pampering to achieve balance, harmony and renewal.</p>
             </div>
             <div class="philosophy-action reveal-up">
-                <a href="#book" class="btn-pill">Book Now</a>
+                <button class="btn-pill open-booking">Book Now</button>
             </div>
         </div>
     </section>
@@ -175,14 +173,25 @@
         </div>
     </footer>
 
+    <div class="booking-modal" id="bookingModal">
+        <div class="booking-content">
+            <button class="close-booking" id="closeBooking">&times;</button>
+            <h2>Book Your Visit</h2>
+            <p>How would you like to schedule your sanctuary experience?</p>
+            <div class="booking-options">
+                <a href="https://wa.me/27123456789" target="_blank" class="btn-whatsapp">Book via WhatsApp</a>
+                <a href="https://www.fresha.com/" target="_blank" class="btn-fresha">Book via Portal</a>
+            </div>
+        </div>
+    </div>
+
     <div class="dossier-modal" id="dossierModal">
         <div class="dossier-content">
             <button class="close-dossier" id="closeDossier">&times;</button>
             
             <h2 id="modalTitle">Package Name</h2>
             
-            <ul class="dossier-list" id="modalList">
-                </ul>
+            <ul class="dossier-list" id="modalList"></ul>
             
             <div class="dossier-meta">
                 <span class="dossier-time" id="modalTime">Time</span>
@@ -190,9 +199,14 @@
             </div>
             
             <div class="dossier-action">
-                <a href="#book" class="btn-pill" onclick="document.getElementById('dossierModal').classList.remove('active');">Book Treatment</a>
+                <button class="btn-pill open-booking" id="dossierBookBtn">Book Treatment</button>
             </div>
         </div>
+    </div>
+
+    <div class="cookie-banner" id="cookieBanner">
+        <span>We use cookies to ensure you get the best experience on our website.</span>
+        <button class="btn-cookie" id="acceptCookiesBtn">Got it</button>
     </div>
 
     <script>
@@ -212,9 +226,7 @@
 
             revealElements.forEach(el => {
                 revealOnScroll.observe(el);
-                if (el.getBoundingClientRect().top < window.innerHeight) {
-                    el.classList.add('active');
-                }
+                if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('active');
             });
 
             // 2. GLASSMORPHIC SIDEBAR TOGGLE
@@ -273,11 +285,10 @@
                     const email = document.getElementById('emailInput').value;
                     const subscribeBtn = document.getElementById('subscribeBtn');
                     
-                    // Button Loading State
                     subscribeBtn.textContent = 'Subscribing...';
                     subscribeBtn.disabled = true;
 
-                    // ⚠️ PASTE YOUR ANON KEY HERE BETWEEN THE QUOTES ⚠️
+                    // ⚠️ PASTE YOUR ANON KEY HERE ⚠️
                     const SUPABASE_ANON_KEY = 'YOUR_ANON_KEY_HERE'; 
                     const SUPABASE_URL = 'https://vafzjdqepmuunwqhzunz.supabase.co/rest/v1/mailing_list';
 
@@ -290,7 +301,6 @@
                                 'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
                                 'Prefer': 'return=minimal'
                             },
-                            // Sends email to the exact column in your Supabase table
                             body: JSON.stringify({ email_address: email })
                         });
 
@@ -303,13 +313,61 @@
                         }
                     } catch (error) {
                         formMessage.textContent = 'Oops! Something went wrong. Please try again.';
-                        formMessage.style.color = '#B35C3B'; // Red-ish tone for errors
+                        formMessage.style.color = '#B35C3B'; 
                     } finally {
                         subscribeBtn.textContent = 'Subscribe';
                         subscribeBtn.disabled = false;
                     }
                 });
             }
+
+            // 5. COOKIE BANNER LOGIC
+            const cookieBanner = document.getElementById('cookieBanner');
+            const acceptCookiesBtn = document.getElementById('acceptCookiesBtn');
+
+            if (cookieBanner && acceptCookiesBtn) {
+                if (localStorage.getItem('cookiesAccepted') === 'true') {
+                    cookieBanner.style.display = 'none';
+                }
+
+                acceptCookiesBtn.addEventListener('click', () => {
+                    cookieBanner.style.display = 'none';
+                    localStorage.setItem('cookiesAccepted', 'true');
+                });
+            }
+
+            // 6. BOOKING CHOICE MODAL LOGIC
+            const bookingModal = document.getElementById('bookingModal');
+            const closeBooking = document.getElementById('closeBooking');
+            const openBookingBtns = document.querySelectorAll('.open-booking');
+
+            openBookingBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    // Close sidebar if open
+                    if (glassSidebar && glassSidebar.classList.contains('active')) {
+                        glassSidebar.classList.remove('active');
+                    }
+                    // Close dossier if open
+                    if (modal && modal.classList.contains('active')) {
+                        modal.classList.remove('active');
+                    }
+                    bookingModal.classList.add('active');
+                });
+            });
+
+            if (closeBooking) {
+                closeBooking.addEventListener('click', () => {
+                    bookingModal.classList.remove('active');
+                });
+            }
+
+            window.addEventListener('click', (e) => {
+                if (e.target === bookingModal) {
+                    bookingModal.classList.remove('active');
+                }
+            });
+
         });
     </script>
 </body>
