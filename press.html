@@ -49,16 +49,33 @@
                     <img src="https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Theme%20Image%201.png" alt="Spa Ambience">
                 </div>
                 <div class="gal-img feat-tall reveal-up" style="transition-delay: 0.1s;">
-                    <img src="https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Theme%20Image%20Website%202.jpg" alt="Treatments">
+                    <img src="https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Dessert%20Theme%201.jpg" alt="Treatments">
                 </div>
                 <div class="gal-img reveal-up" style="transition-delay: 0.2s;">
-                    <img src="https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Spa%20image%203.png" alt="Oils">
+                    <img src="https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Spa%20Image%201.png" alt="Oils">
                 </div>
+                <div class="gal-img reveal-up" style="transition-delay: 0.3s;">
+                    <img src="https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Spa%20image%203.png" alt="Relaxation">
+                </div>
+
                 <div class="gal-img feat-wide reveal-up">
-                    <img src="https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Social%20Media%204.png" alt="Relaxation">
+                    <img src="https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Onboarding.jpg" alt="Interior">
+                </div>
+                <div class="gal-img feat-tall reveal-up" style="transition-delay: 0.1s;">
+                    <img src="https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Theme%20Image%20Website%202.jpg" alt="Details">
+                </div>
+                <div class="gal-img reveal-up" style="transition-delay: 0.2s;">
+                    <img src="https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Dessert%20Theme%201.jpg" alt="Aesthetics">
+                </div>
+
+                <div class="gal-img reveal-up">
+                    <img src="https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Spa%20Image%201.png" alt="Calm">
                 </div>
                 <div class="gal-img reveal-up" style="transition-delay: 0.1s;">
-                    <img src="https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Theme%20Image%20Website%202.jpg" alt="Interior">
+                    <img src="https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Social%20Media%204.png" alt="Products">
+                </div>
+                <div class="gal-img reveal-up" style="transition-delay: 0.2s;">
+                    <img src="https://vafzjdqepmuunwqhzunz.supabase.co/storage/v1/object/public/branding/Onboarding.jpg" alt="Welcome">
                 </div>
             </div>
         </div>
@@ -184,45 +201,6 @@
             if(menuToggle && closeMenu && glassSidebar) {
                 menuToggle.addEventListener('click', () => glassSidebar.classList.add('active'));
                 closeMenu.addEventListener('click', () => glassSidebar.classList.remove('active'));
-            }
-
-            const newsletterForm = document.getElementById('newsletterForm');
-            const formMessage = document.getElementById('formMessage');
-            if(newsletterForm) {
-                newsletterForm.addEventListener('submit', async (e) => {
-                    e.preventDefault();
-                    const email = document.getElementById('emailInput').value;
-                    const subscribeBtn = document.getElementById('subscribeBtn');
-                    subscribeBtn.textContent = 'Subscribing...';
-                    subscribeBtn.disabled = true;
-
-                    const SUPABASE_ANON_KEY = 'YOUR_ANON_KEY_HERE'; 
-                    const SUPABASE_URL = 'https://vafzjdqepmuunwqhzunz.supabase.co/rest/v1/mailing_list';
-
-                    try {
-                        const response = await fetch(SUPABASE_URL, {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'apikey': SUPABASE_ANON_KEY,
-                                'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-                                'Prefer': 'return=minimal'
-                            },
-                            body: JSON.stringify({ email_address: email })
-                        });
-                        if (response.ok) {
-                            formMessage.textContent = 'Thank you! You have been successfully subscribed.';
-                            formMessage.style.color = 'var(--text-dark)';
-                            newsletterForm.reset();
-                        } else { throw new Error('Network error.'); }
-                    } catch (error) {
-                        formMessage.textContent = 'Oops! Something went wrong. Please try again.';
-                        formMessage.style.color = '#B35C3B'; 
-                    } finally {
-                        subscribeBtn.textContent = 'Subscribe';
-                        subscribeBtn.disabled = false;
-                    }
-                });
             }
 
             const cookieBanner = document.getElementById('cookieBanner');
